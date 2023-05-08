@@ -1,5 +1,7 @@
 "use strict";
 
+let endpoint = "https://delfindaba-16acc-default-rtdb.europe-west1.firebasedatabase.app/";
+
 window.addEventListener("load", initApp);
 
 function initApp() {
