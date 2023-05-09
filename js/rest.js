@@ -1,10 +1,11 @@
 "use strict";
 //all the rest are belong to this
 const exampleUserStructure = {
+  role: "",
   subscription: "senior", //young, senior, retired, passive
   discipline: "butterfly", //butterfly, crawl, backCrawl and breastStroke
   age: 33,
-  coach: "",
+  coachId: "",
   firstName: "Taylor",
   lastName: "Swift",
   debt: 900,
