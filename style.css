@@ -111,6 +111,10 @@ nav {
 .filter-grid {
   display: flex;
   justify-content: space-between;
+  padding: 1em;
+}
+
+.filter-grid-2 {
 }
 
 /* fade in */
