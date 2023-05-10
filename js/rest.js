@@ -1,8 +1,9 @@
 "use strict";
+
 //all the rest are belong to this
 const exampleUserStructure = {
-  role: "",
-  subscription: "senior", //young, senior, retired, passive
+  role: "", //trainer,administrative,swimmer,proSwimmer
+  subscription: "senior", //junior, senior, retired, passive
   discipline: "butterfly", //butterfly, crawl, backCrawl and breastStroke
   age: 33,
   coachId: "",
@@ -22,5 +23,27 @@ const exampleResultStructure = {
   time: 125, //formatted in seconds'
 };
 
-const url =
+const endpoint =
   "https://delfindaba-16acc-default-rtdb.europe-west1.firebasedatabase.app/";
+
+async function getUsers() {
+  const response = await fetch(`${endpoint}/participant.json`);
+  const data = await response.json();
+  const users = prepareData(data);
+  return users;
+}
+
+export { getUsers };
+
+function prepareData(dataObject) {
+  console.log(dataObject);
+  const array = []; // define empty array
+  // loop through every key in dataObject
+  // the value of every key is an object
+  for (const key in dataObject) {
+    const object = dataObject[key]; // define object
+    object.id = key; // add the key in the prop id
+    array.push(object); // add the object to array
+  }
+  return array; // return array back to "the caller"
+}

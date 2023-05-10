@@ -8,11 +8,73 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <nav>
-      <a href="index.html">Medlemmer</a>
-      <a href="statistics.html" class="active">Statistik</a>
-      <a href="economy.html">Økonomi</a>
-    </nav>
-    <script src="js/app.js"></script>
+    <div class="nav-grid">
+      <nav>
+        <a href="index.html">Medlemmer</a>
+        <a href="statistics.html" class="active">Statistik</a>
+        <a href="economy.html">Økonomi</a>
+      </nav>
+    </div>
+
+    <div class="filter-grid">
+      <label for="sortByGender">Køn:</label>
+      <select id="sortByGender">
+        <option value="" selected>Begge</option>
+        <option value="herrer">Herrer</option>
+        <option value="damer">Damer</option>
+      </select>
+
+      <label for="sortByAge">Alder: </label>
+      <select id="sortByAge">
+        <option value="" selected>Begge:</option>
+        <option value="senior">Senior</option>
+        <option value="junior">Junior</option>
+      </select>
+    </div>
+
+    <div class="grid-container">
+      <div class="grid-item">
+        Butterfly
+        <ol>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+        </ol>
+      </div>
+      <div class="grid-item">
+        Crawl
+        <ol>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+        </ol>
+      </div>
+      <div class="grid-item">
+        Backcrawl
+        <ol>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+        </ol>
+      </div>
+      <div class="grid-item">
+        Breaststroke
+        <ol>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+        </ol>
+      </div>
+    </div>
+
+    <script src="js/app.js" type="module"></script>
   </body>
 </html>
