@@ -1,9 +1,7 @@
 "use strict";
 
-import { getUsers } from "./rest.js";
+import { getUsers, createUser, deleteUser, updateUser } from "./rest.js";
 let users;
-const endpoint =
-  "https://delfindaba-16acc-default-rtdb.europe-west1.firebasedatabase.app/";
 
 window.addEventListener("load", initApp);
 
@@ -14,7 +12,7 @@ function initApp() {
 
 async function updateUsersGrid() {
   users = await getUsers();
-  showUser(users);
+  users.forEach(showUser);
 }
 
 function showUser(userObject) {

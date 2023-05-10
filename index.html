@@ -13,9 +13,28 @@
       <a href="statistics.html">Statistik</a>
       <a href="economy.html">Økonomi</a>
     </nav>
-    <main>
+
+    <div class="filter-grid">
+      <div>
+        <button id="create-user-btn">Opret medlem</button>
+      </div>
+      <div>
+        <label for="searchbar"></label>
+        <input type="search" id="searchbar" placeholder="Search by ..." />
+      </div>
+      <div>
+        <label for="sort">Filter something?</label>
+        <select id="sort">
+          <option value="" selected>Alle</option>
+          <option value="">etellerandet</option>
+          <option value="">etellerandet</option>
+        </select>
+      </div>
+    </div>
+
+    <div>
       <section id="users" class="grid-container"></section>
-    </main>
+    </div>
     <script src="js/app.js" type="module"></script>
   </body>
 </html>

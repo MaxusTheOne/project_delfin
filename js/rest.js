@@ -33,17 +33,96 @@ async function getUsers() {
   return users;
 }
 
-export { getUsers };
+async function createUser(
+  role,
+  subscription,
+  discipline,
+  age,
+  coachId,
+  firstName,
+  lastName,
+  debt,
+  gender,
+  image
+) {
+  const jsObject = {
+    role,
+    subscription,
+    discipline,
+    age,
+    coachId,
+    firstName,
+    lastName,
+    debt,
+    gender,
+    image,
+  };
+  const postAsJson = JSON.stringify(jsObject);
+  console.log(`postAsJson: ${postAsJson}`);
+  const response = await fetch(`${endpoint}/participant.json`, {
+    method: "POST",
+    body: postAsJson,
+  });
+  console.log(`response: ${response}`);
+  if (response.ok) {
+    console.log("created");
+  }
+  return response;
+}
+
+async function deleteUser(id) {
+  const response = await fetch(`${endpoint}/participant/${id}.json`, {
+    method: "DELETE",
+  });
+  if (response.ok) {
+    console.log("Deleted");
+  }
+  return response;
+}
+
+async function updateUser(
+  id,
+  role,
+  subscription,
+  discipline,
+  age,
+  coachId,
+  firstName,
+  lastName,
+  debt,
+  gender,
+  image
+) {
+  const userToUpdate = {
+    role,
+    subscription,
+    discipline,
+    age,
+    coachId,
+    firstName,
+    lastName,
+    debt,
+    gender,
+    image,
+  };
+  const postAsJson = JSON.stringify(userToUpdate);
+  const url = `${endpoint}/participant/${id}.json`;
+  const response = await fetch(url, { method: "PUT", body: postAsJson });
+  if (response.ok) {
+    console.log("updated");
+  }
+  return response;
+}
+
+export { getUsers, createUser, deleteUser, updateUser };
 
 function prepareData(dataObject) {
   console.log(dataObject);
-  const array = []; // define empty array
-  // loop through every key in dataObject
-  // the value of every key is an object
+  const array = [];
   for (const key in dataObject) {
-    const object = dataObject[key]; // define object
-    object.id = key; // add the key in the prop id
-    array.push(object); // add the object to array
+    const object = dataObject[key];
+    object.id = key;
+    array.push(object);
   }
-  return array; // return array back to "the caller"
+  return array;
 }
