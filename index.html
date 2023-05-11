@@ -8,12 +8,13 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
+    <header>
     <nav>
       <a href="index.html" class="active">Medlemmer</a>
       <a href="statistics.html">Statistik</a>
       <a href="economy.html">Økonomi</a>
     </nav>
-
+  </header>
     <div class="filter-grid">
       <div>
         <button id="create-user-btn">Opret medlem</button>
@@ -27,7 +28,7 @@
         <select id="sort">
           <option value="" selected>Alle</option>
           <option value="">etellerandet</option>
-          <option value="">etellerandet</option>
+          <option value="">etellerandet2</option>
         </select>
       </div>
     </div>
@@ -35,6 +36,170 @@
     <div>
       <section id="users" class="grid-container"></section>
     </div>
+    <footer>
+      tis
+    </footer>
+    
+    <!-- USER DIALOG-->
+
+    <dialog id="dialog-member-info">
+      <section class="dialog-grid">
+        <figure>
+          <img
+            id="dialog-image"
+            src="https://pbs.twimg.com/media/FTDgrd9X0AMLEuQ?format=jpg&name=medium"
+            alt="image"
+          />
+        </figure>
+      
+        <section>
+          <h3>Medlemsinfo</h3>
+           <h4 id="dialog-name">Navn</h4>
+          <h4 id="dialog-age">Alder</h4>
+          <ul>
+            <li>Medlemsskab: <span id="dialog-subscription"></span></li>
+            <li>Rolle: <span id="dialog-role"></span></li>
+            <li>Disciplin: <span id="dialog-discipline"></span></li>
+            <li>Køn: <span id="dialog-gender"></span></li>
+          </ul>
+        </section>
+      </section>
+    </dialog>
+
+    <!-- CREATE DIALOG-->
+    <dialog id="dialog-create-user">
+      <h2>Tilføj medlem:</h2>
+      <form id="form-create-user" method="dialog">
+        <label for="firstName">Fornavn:</label>
+        <input
+          type="text"
+          id="create-firstName"
+          name="firstName"
+          placeholder="Skriv fornavn på medlem"
+        />
+        <label for="lastName">Efternavn:</label>
+        <input
+          type="text"
+          id="create-lastName"
+          name="lastName"
+          placeholder="Skriv efternavn på medlem"
+        />
+        <label for="age">Alder:</label>
+        <input
+          type="text"
+          id="create-age"
+          name="age"
+          placeholder="Skriv alder på medlem"
+        />
+        <label for="gender">Køn:</label>
+        <select name="gender" id="create-gender">
+          <option value="">Ikke valgt</option selected>
+          <option value="male">Mand</option>
+          <option value="female">Dame</option>
+          <option value="other">Other</option>
+        </select>
+        <label for="subscription">Medlemsskab:</label>
+        <select name="subscription" id="create-subscription">
+          <option value="">Ikke valgt</option selected>
+          <option value="senior">Senior</option>
+          <option value="junior">Junior</option>
+        </select>
+        <label for="role">Rolle:</label>
+        <select name="role" id="create-role">
+          <option value="">Ikke valgt</option selected>
+          <option value="proSwimmer">Elitesvømmer </option>
+          <option value="swimmer">Svømmer </option>
+        </select>
+        <label for="discipline">Disciplin:</label>
+        <select name="discipline" id="create-discipline">
+          <option value="">Ikke valgt</option selected>
+          <option value="butterfly">Butterfly</option>
+          <option value="crawl">Crawl</option>
+          <option value="backstroke">Backcrawl</option>
+          <option value="breaststroke">Breaststroke</option>
+        </select>
+        <label for="coachId">Træner ID:</label>
+        <input type="text" id="create-coachId" name="coachId" placeholder="Skriv træner ID"/>
+        <label for="debt">Gæld: </label>
+        <input type="text" id="create-debt" name="debt" placeholder="Skriv gæld">
+        <label for="image">Image: </label>
+        <input type="url" id="create-image" name="image" placeholder="Sæt IMG URL ind her"/>
+        <button id="create-user-btn">Opret medlem</button>
+      </form>
+    </dialog>
+
+    <!-- UPDATE DIALOG-->
+    <dialog id="dialog-update-user" >
+      <h2>Opdater medlem</h2>
+       <form id="form-update-user" method="dialog">
+        <label for="update-firstName">Fornavn:</label>
+        <input
+          type="text"
+          id="update-firstName"
+          name="firstName"
+          placeholder="Opdater fornavn på medlem"
+        />
+        <label for="update-lastName">Efternavn:</label>
+        <input
+          type="text"
+          id="update-lastName"
+          name="lastName"
+          placeholder="Opdater efternavn på medlem"
+        />
+        <label for="update-age">Alder:</label>
+        <input
+          type="text"
+          id="update-age"
+          name="age"
+          placeholder="Opdater alder på medlem"
+        />
+        <label for="update-gender">Køn:</label>
+        <select name="gender" id="update-gender">
+          <option value="">Ikke valgt</option selected>
+          <option value="male">Mand</option>
+          <option value="female">Dame</option>
+          <option value="other">Other</option>
+        </select>
+        <label for="update-subscription">Medlemsskab:</label>
+        <select name="subscription" id="update-subscription">
+          <option value="">Ikke valgt</option selected>
+          <option value="senior">Senior</option>
+          <option value="junior">Junior</option>
+        </select>
+        <label for="update-role">Rolle:</label>
+        <select name="role" id="update-role">
+          <option value="">Ikke valgt</option selected>
+          <option value="proSwimmer">Elitesvømmer </option>
+          <option value="swimmer">Svømmer </option>
+        </select>
+        <label for="update-discipline">Disciplin:</label>
+        <select name="discipline" id="update-discipline">
+          <option value="">Ikke valgt</option selected>
+          <option value="butterfly">Butterfly</option>
+          <option value="crawl">Crawl</option>
+          <option value="backstroke">Backcrawl</option>
+          <option value="breaststroke">Breaststroke</option>
+        </select>
+        <label for="update-coachId">Træner ID:</label>
+        <input type="text" id="update-coachId" name="coachId" placeholder="Opdater træner ID"/>
+        <label for="update-image">Image: </label>
+        <input type="url" id="update-image" name="image" placeholder="Sæt IMG URL ind her"/>
+      </form>
+    </dialog>
+
+
+    <!--DELETE DIALOG-->
+    <dialog id="dialog-delete-user">
+      <h2>Vil du slette dette medlem?</h2>
+      <p id="dialog-delete-user-name"></p>
+      <form action="" id="form-delete-user">
+        <div id="delete-grid">
+          <input id="btn-no" type="button" value="Nej" />
+          <input type="submit" value="Ja" />
+        </div>
+      </form>
+    </dialog>
+    <div id="snackbar"></div>
     <script src="js/app.js" type="module"></script>
   </body>
 </html>

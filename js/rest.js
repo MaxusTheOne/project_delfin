@@ -22,15 +22,32 @@ const exampleResultStructure = {
   discipline: "butterfly", //butterfly, crawl, backCrawl and breastStroke
   time: 125, //formatted in seconds'
 };
-
+let lastTime = 0;
+let swimmers = [];
 const endpoint =
   "https://delfindaba-16acc-default-rtdb.europe-west1.firebasedatabase.app/";
 
 async function getUsers() {
+  // const now = Date.now();
+  // if (now - lastTime > 10000 || swimmers.length === 0) {
+  //   await refetchUserData();
+  // }
+  // const after = Date.now();
+  // console.log("Time to fetch " + (after - now) + " milliseconds");
+  // return swimmers;
   const response = await fetch(`${endpoint}/participant.json`);
   const data = await response.json();
   const users = prepareData(data);
+  // lastTime = Date.now();
   return users;
+}
+
+async function refetchUserData() {
+  // const response = await fetch(`${endpoint}/participant.json`);
+  // const data = await response.json();
+  // const users = prepareData(data);
+  // lastTime = Date.now();
+  // return users;
 }
 
 async function createUser(
