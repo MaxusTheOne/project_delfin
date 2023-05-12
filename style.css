@@ -340,7 +340,7 @@ select {
   border: none;
   color: var(--text-color-light);
   padding: 1em;
-  margin: 1em;
+  margin-left: 3em;
   max-width: 350px;
 }
 
