@@ -25,7 +25,6 @@
 .fourth-color { 
 	background: #cca8e9;  */
 
-/* general styling */
 html {
   background-color: #defcf9;
   color: var(--text-color-dark);
@@ -216,9 +215,10 @@ main {
   height: 400px;
   object-fit: cover;
   border-radius: 10%;
+  cursor: pointer;
 }
 
-.grid-item-user:hover {
+.grid-item-user img:hover {
   box-shadow: 0 8px 32px 2px;
 }
 
@@ -276,15 +276,29 @@ main {
   padding: 20px 60px;
 }
 
-/* input form styling */
-form {
-  margin: 2em auto 0;
-  background-color: var(--purple);
-  padding: 1em 1em 2em;
-  text-align: center;
+#dialog-close-btn {
+  position: fixed;
+  cursor: pointer;
+  color: black;
+  left: 67.5%;
+  top: 7.5%;
+  font-size: 1.5em;
 }
 
-button {
+#dialog-image {
+  object-fit: cover;
+  object-position: top;
+  align-self: center;
+  height: 400px;
+  border: solid #373b44;
+  border-radius: 8px;
+}
+
+#create-user-btn,
+#form-create-btn,
+#btn-no,
+.btn-delete,
+.btn-update {
   font-weight: 300;
   font-size: 1em;
   text-align: center;
@@ -313,7 +327,7 @@ input {
   width: 100%;
   max-width: 350px;
   padding: 1em;
-  border: 2px solid var(--navy);
+  border: 2px solid black;
   background: var(--white);
 }
 
@@ -336,10 +350,15 @@ select {
 
 /* dialog styling */
 
+form button {
+  grid-column: 1 / 1;
+}
+
 dialog {
   border-color: var(--navy);
   background-color: #c3bef0;
-  width: 65vw;
+  width: 40%;
+  height: 80%;
   padding: 2em 1em;
 }
 
@@ -349,7 +368,7 @@ dialog::backdrop {
 
 .dialog-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr;
 }
 
 dialog h4 {
@@ -364,7 +383,13 @@ dialog p {
 }
 
 button.btn-delete:hover {
-  background-color: rgb(241, 96, 96);
+  background-color: #ea5045;
+  box-shadow: 0 4px 8px 2px;
+}
+
+button.btn-update:hover {
+  background-color: rgb(96, 241, 149);
+  box-shadow: 0 4px 8px 2px;
 }
 
 /* tools grid styling */
@@ -398,7 +423,9 @@ button.btn-delete:hover {
   width: 90%;
 }
 
-form {
+#form-create-user,
+#form-update-user,
+#form-delete-user {
   margin: 2em auto 0;
   background-color: var(--light-green);
   padding: 1em 1em 2em;
@@ -406,4 +433,13 @@ form {
   font-size: larger;
   display: grid;
   grid-template-columns: 1fr 2fr;
+  text-align: left;
 }
+
+/* input form styling */
+/*form {
+  margin: 2em auto 0;
+  background-color: var(--purple);
+  padding: 1em 1em 2em;
+  text-align: center;
+}*/

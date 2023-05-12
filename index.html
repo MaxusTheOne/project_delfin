@@ -43,17 +43,13 @@
     <!-- USER DIALOG-->
 
     <dialog id="dialog-member-info">
+       <form method="dialog">
+        <button id="dialog-close-btn">X</button>
+      </form>
       <section class="dialog-grid">
-        <figure>
-          <img
-            id="dialog-image"
-            src="https://pbs.twimg.com/media/FTDgrd9X0AMLEuQ?format=jpg&name=medium"
-            alt="image"
-          />
-        </figure>
-      
         <section>
-          <h3>Medlemsinfo</h3>
+          <h3><strong>Medlemsinfo</strong></h3>
+          <img id="dialog-image">
            <h4 id="dialog-name">Navn</h4>
           <h4 id="dialog-age">Alder</h4>
           <ul>
@@ -68,6 +64,9 @@
 
     <!-- CREATE DIALOG-->
     <dialog id="dialog-create-user">
+      <form method="dialog">
+        <button id="dialog-close-btn">X</button>
+      </form>
       <h2>Tilføj medlem:</h2>
       <form id="form-create-user" method="dialog">
         <label for="firstName">Fornavn:</label>
@@ -124,12 +123,15 @@
         <input type="text" id="create-debt" name="debt" placeholder="Skriv gæld">
         <label for="image">Image: </label>
         <input type="url" id="create-image" name="image" placeholder="Sæt IMG URL ind her"/>
-        <button id="create-user-btn">Opret medlem</button>
+        <button id="form-create-btn">Opret medlem</button>
       </form>
     </dialog>
 
     <!-- UPDATE DIALOG-->
     <dialog id="dialog-update-user" >
+      <form>
+        <button id="dialog-close-btn">X</button>
+      </form>
       <h2>Opdater medlem</h2>
        <form id="form-update-user" method="dialog">
         <label for="update-firstName">Fornavn:</label>

@@ -74,7 +74,6 @@ function showUsers(listOfUsers) {
 }
 
 function showUser(userObject) {
-  console.log(userObject);
   //dom manipulation
   const html = /*html*/ `
 <article class="grid-item-user">
@@ -96,24 +95,38 @@ function showUser(userObject) {
     .addEventListener("click", updateClicked);
 
   document
-    .querySelector("#users article:last-child")
+    .querySelector("#users article:last-child img")
     .addEventListener("click", () => showUserModal(userObject));
-}
 
-function deleteClicked() {
-  console.log("Knappen Virker");
-  // document.querySelector("#dialog-delete-user").showModal();
-  // document.querySelector("#dialog-delete-user-name").textContent =
-  //   userObject.firstName;
-  // document
-  //   .querySelector("#form-delete-user")
-  //   .setAttribute("data-id", userObject.id);
-  // document.querySelector("#btn-no").addEventListener("click", function () {
-  //   document.querySelector("#dialog-delete-user").close();
-  // });
-  // document
-  //   .querySelector("#form-delete-user")
-  //   .addEventListener("submit", deleteUserClicked);
+  function deleteClicked() {
+    console.log("Knappen Virker");
+    console.log(userObject);
+    document.querySelector("#dialog-delete-user").showModal();
+    document.querySelector("#dialog-delete-user-name").textContent =
+      userObject.firstName;
+    document
+      .querySelector("#form-delete-user")
+      .setAttribute("data-id", userObject.id);
+    document.querySelector("#btn-no").addEventListener("click", function () {
+      document.querySelector("#dialog-delete-user").close();
+    });
+    document
+      .querySelector("#form-delete-user")
+      .addEventListener("submit", deleteUserClicked);
+  }
+}
+async function deleteUserClicked(event) {
+  event.preventDefault();
+  const form = event.target;
+  const id = form.getAttribute("data-id");
+  const response = await deleteUser(id);
+  if (response.ok) {
+    updateUsersGrid();
+  } else {
+    console.log(response.status, response.statusText);
+  }
+  form.reset();
+  document.querySelector("#dialog-delete-user").close();
 }
 
 function updateClicked() {
@@ -122,11 +135,16 @@ function updateClicked() {
 
 function showUserModal(user) {
   console.log(user);
+  document.querySelector("#dialog-age").textContent = user.age + " years old";
+  document.querySelector(
+    "#dialog-name"
+  ).textContent = `${user.firstName} ${user.lastName}`;
   document.querySelector("#dialog-subscription").textContent =
     user.subscription;
   document.querySelector("#dialog-role").textContent = user.role;
   document.querySelector("#dialog-discipline").textContent = user.discipline;
   document.querySelector("#dialog-gender").textContent = user.gender;
+  document.querySelector("#dialog-image").src = user.image;
   console.log("");
   // show dialog
   document.querySelector("#dialog-member-info").showModal();
