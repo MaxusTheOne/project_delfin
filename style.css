@@ -323,7 +323,7 @@ header button {
 }
 
 input {
-  margin: 1em auto;
+  margin: 0em auto;
   width: 100%;
   max-width: 350px;
   padding: 1em;
