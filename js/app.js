@@ -81,8 +81,8 @@ function showUser(userObject) {
 <h3>${userObject.firstName} ${userObject.lastName} </h3>
 <h3>${userObject.age}</h3>
 <div class="btns">
-<button class="btn-update">Update</button>
-<button class="btn-delete">Delete</button>
+<button class="btn-update">Opdater</button>
+<button class="btn-delete">Slet</button>
 </div>
 </article>
 `;
