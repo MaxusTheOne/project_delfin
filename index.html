@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Delfinen svømmehal</title>
     <link rel="stylesheet" href="style.css" />
+    <link rel="shortcut icon" href="delfinpng.png" type="image/x-icon">
   </head>
   <body>
     <header>
@@ -21,10 +22,10 @@
       </div>
       <div>
         <label for="searchbar"></label>
-        <input type="search" id="searchbar" placeholder="Search by ..." />
+        <input type="search" id="searchbar" placeholder="Søg efter ..." />
       </div>
       <div>
-        <label for="sort">Filter something?</label>
+        <label for="sort">Sorter:</label>
         <select id="sort">
           <option value="" selected>Alle</option>
           <option value="">etellerandet</option>
@@ -37,7 +38,7 @@
       <section id="users" class="grid-container"></section>
     </div>
     <footer>
-      tis
+      Delfinen Svømmehal
     </footer>
     
     <!-- USER DIALOG-->
@@ -117,8 +118,7 @@
           <option value="backstroke">Backcrawl</option>
           <option value="breaststroke">Breaststroke</option>
         </select>
-        <label for="coachId">Træner ID:</label>
-        <input type="text" id="create-coachId" name="coachId" placeholder="Skriv træner ID"/>
+        <label for="coach" id="coach-label">Træner:</label>
         <label for="debt">Gæld: </label>
         <input type="text" id="create-debt" name="debt" placeholder="Skriv gæld">
         <label for="image">Image: </label>
@@ -157,35 +157,43 @@
         />
         <label for="update-gender">Køn:</label>
         <select name="gender" id="update-gender">
-          <option value="">Ikke valgt</option selected>
+          <option value="">Ikke valgt</option>
           <option value="male">Mand</option>
           <option value="female">Dame</option>
           <option value="other">Other</option>
         </select>
         <label for="update-subscription">Medlemsskab:</label>
         <select name="subscription" id="update-subscription">
-          <option value="">Ikke valgt</option selected>
+          <option value="">Ikke valgt</option>
           <option value="senior">Senior</option>
           <option value="junior">Junior</option>
         </select>
+        <label for="update-debt">Gæld:</label>
+        <input type="text" name="debt" id="update-debt">
         <label for="update-role">Rolle:</label>
         <select name="role" id="update-role">
-          <option value="">Ikke valgt</option selected>
+          <option value="">Ikke valgt</option>
           <option value="proSwimmer">Elitesvømmer </option>
           <option value="swimmer">Svømmer </option>
         </select>
         <label for="update-discipline">Disciplin:</label>
         <select name="discipline" id="update-discipline">
-          <option value="">Ikke valgt</option selected>
+          <option value="">Ikke valgt</option >
           <option value="butterfly">Butterfly</option>
           <option value="crawl">Crawl</option>
           <option value="backstroke">Backcrawl</option>
           <option value="breaststroke">Breaststroke</option>
         </select>
-        <label for="update-coachId">Træner ID:</label>
-        <input type="text" id="update-coachId" name="coachId" placeholder="Opdater træner ID"/>
+      <label for="coach" id="coach-label">Træner:</label>
+        <select name="coach" id="update-coach">
+          <option value="">Vælg træner</option >
+          <option value="Jason Carter">Jason Carter</option>
+          <option value="Jessica Lee">Jessica Lee</option>
+          <option value="Michael Chen">Michael Chen</option>
+        </select>
         <label for="update-image">Image: </label>
         <input type="url" id="update-image" name="image" placeholder="Sæt IMG URL ind her"/>
+        <button id="form-update-btn">Opdater medlem</button>
       </form>
     </dialog>
 

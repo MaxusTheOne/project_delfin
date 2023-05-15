@@ -280,9 +280,10 @@ main {
   position: fixed;
   cursor: pointer;
   color: black;
-  left: 67.5%;
-  top: 7.5%;
+  left: 66.5%;
+  top: 10.5%;
   font-size: 1.5em;
+  border: 2.5px solid black;
 }
 
 #dialog-image {
@@ -346,6 +347,15 @@ select {
 
 #sort {
   border: 2px solid black;
+  margin-left: 0;
+}
+
+#sortByGender {
+  margin-left: 0;
+}
+
+#sortByAge {
+  margin-left: 0;
 }
 
 /* dialog styling */
@@ -359,7 +369,7 @@ dialog {
   background-color: #c3bef0;
   width: 40%;
   height: 80%;
-  padding: 2em 1em;
+  padding-top: 0;
 }
 
 dialog::backdrop {

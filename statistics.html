@@ -4,8 +4,9 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Svømme Statestik</title>
+    <title>Svømmestatistik</title>
     <link rel="stylesheet" href="style.css" />
+    <link rel="shortcut icon" href="delfinpng.png" type="image/x-icon">
   </head>
   <body>
     <header>
@@ -17,6 +18,8 @@
     </header>
 
     <div class="filter-grid-2">
+      <button id="create-statistics-btn">Create</button>
+
       <label for="sortByGender">Køn:</label>
       <select id="sortByGender">
         <option value="" selected>Begge</option>
@@ -32,49 +35,64 @@
       </select>
     </div>
 
+    <!-- CREATE STATISTICS DIALOG-->
+    <dialog id="dialog-create-statistics">
+      <form method="dialog">
+        <button id="dialog-close-btn">X</button>
+      </form>
+      <form method="dialog" id="form-create-statistics">
+        <h2>Tilføj svømmeresultat:</h2>
+        <label for="meetName">Stævne:</label>
+        <input type="text" id="statistics-meetName" name="meetName" placeholder="Skriv stævnenavn">
+        <label for="date">Dato:</label>
+        <input type="date" id="statistics-date" name="date"
+        value="" min="2023-01-01" max="2023-12-31">
+        <label for="place">Plads:</label>
+   <select name="place" id="statistics-place">
+    <option value="">Ikke valgt</option selected>
+    <option value="1">1</option>
+    <option value="2">2</option>
+    <option value="3">3</option>
+    <option value="4">4</option>
+    <option value="5">5</option>
+   </select>
+        <label for="time">Tid:</label>
+        <input type="text" id="statistics-time" name="time" placeholder="Skriv resultat" />
+        <label for="discipline">Disciplin:</label>
+  <select name="discipline" id="statistics-discipline">
+    <option value="">Ikke valgt</option selected>
+    <option value="butterfly">Butterfly</option>
+    <option value="crawl">Crawl</option>
+    <option value="rygcrawl">Rygcrawl</option>
+    <option value="brystsvømning">Brystsvømning</option>
+  </select>
+  <label for="participantId">Deltager ID: </label>
+<select name="participantId" id="statistics-participantId">
+  <option value="">Ikke valgt</option>
+</select>
+<button id="form-create-statistics-btn">Opret resultat:</button>
+      </form>
+    </dialog>
+
     <div class="grid-container-2">
       <div class="grid-item">
-        Butterfly
-        <ol>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-        </ol>
+        <h3>Butterfly</h3>
+        <ol id="butterflyList"></ol>
       </div>
       <div class="grid-item">
-        Crawl
-        <ol>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-        </ol>
+        <h3>Crawl</h3>
+        <ol id="crawlList"></ol>
       </div>
       <div class="grid-item">
-        Backcrawl
-        <ol>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-        </ol>
+        <h3>Rygcrawl</h3>
+        <ol id="rygcrawlList"></ol>
       </div>
       <div class="grid-item">
-        Breaststroke
-        <ol>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-        </ol>
+        <h3>Brystsvømning</h3>
+        <ol id="brystsvømningList"></ol>
       </div>
     </div>
 
-    <script src="js/app.js" type="module"></script>
+    <script src="js/statistics.js" type="module"></script>
   </body>
 </html>

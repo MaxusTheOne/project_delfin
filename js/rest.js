@@ -2,9 +2,9 @@
 
 //all the rest are belong to this
 const exampleUserStructure = {
-  role: "", //trainer,administrative,swimmer,proSwimmer
-  subscription: "senior", //junior, senior, retired, passive
-  discipline: "butterfly", //butterfly, crawl, backCrawl and breastStroke
+  role: "", //træner,svømmer,elitesvømmer
+  subscription: "senior", //junior, senior, pensionist, passiv
+  discipline: "butterfly", //butterfly, crawl, rygcrawl and brystsvømning
   age: 33,
   coachId: "",
   firstName: "Taylor",
@@ -24,8 +24,7 @@ const exampleResultStructure = {
 };
 let lastTime = 0;
 let swimmers = [];
-const endpoint =
-  "https://delfindaba-16acc-default-rtdb.europe-west1.firebasedatabase.app/";
+const endpoint = "https://delfindaba-16acc-default-rtdb.europe-west1.firebasedatabase.app/";
 
 async function getUsers() {
   // const now = Date.now();
@@ -50,18 +49,7 @@ async function refetchUserData() {
   // return users;
 }
 
-async function createUser(
-  role,
-  subscription,
-  discipline,
-  age,
-  coachId,
-  firstName,
-  lastName,
-  debt,
-  gender,
-  image
-) {
+async function createUser(role, subscription, discipline, age, coachId, firstName, lastName, debt, gender, image) {
   const jsObject = {
     role,
     subscription,
@@ -97,20 +85,9 @@ async function deleteUser(id) {
   return response;
 }
 
-async function updateUser(
-  id,
-  role,
-  subscription,
-  discipline,
-  age,
-  coachId,
-  firstName,
-  lastName,
-  debt,
-  gender,
-  image
-) {
+async function updateUser(id, role, subscription, discipline, age, coachId, firstName, lastName, debt, gender, image) {
   const userToUpdate = {
+    id,
     role,
     subscription,
     discipline,
@@ -131,10 +108,31 @@ async function updateUser(
   return response;
 }
 
-export { getUsers, createUser, deleteUser, updateUser };
+async function getResults() {
+  const response = await fetch(`${endpoint}/results.json`);
+  const data = await response.json();
+  const results = prepareData(data);
+  console.log(results);
+  return results;
+}
+
+async function createResults(date, discipline, id, meetName, participantId, place, time) {
+  const jsObject = { date, discipline, id, meetName, participantId, place, time };
+  const postAsJson = JSON.stringify(jsObject);
+  console.log(`postAsJson: ${postAsJson}`);
+  const response = await fetch(`${endpoint}/results.json`, {
+    method: "POST",
+    body: postAsJson,
+  });
+  console.log(`response: ${response}`);
+  if (response.ok) {
+    console.log("created");
+  }
+  return response;
+}
 
 function prepareData(dataObject) {
-  console.log(dataObject);
+  // console.log(dataObject);
   const array = [];
   for (const key in dataObject) {
     const object = dataObject[key];
@@ -143,3 +141,5 @@ function prepareData(dataObject) {
   }
   return array;
 }
+
+export { getUsers, createUser, deleteUser, updateUser, getResults, createResults, endpoint };
