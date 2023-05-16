@@ -46,7 +46,7 @@
         <input type="text" id="statistics-meetName" name="meetName" placeholder="Skriv stævnenavn">
         <label for="date">Dato:</label>
         <input type="date" id="statistics-date" name="date"
-        value="" min="2023-01-01" max="2023-12-31">
+        value="" min="2016-01-01" max="2023-12-31">
         <label for="place">Plads:</label>
    <select name="place" id="statistics-place">
     <option value="">Ikke valgt</option selected>
@@ -66,9 +66,9 @@
     <option value="rygcrawl">Rygcrawl</option>
     <option value="brystsvømning">Brystsvømning</option>
   </select>
-  <label for="participantId">Deltager ID: </label>
-<select name="participantId" id="statistics-participantId">
-  <option value="">Ikke valgt</option>
+  <label for="participantId" id="participantId">Deltager ID: </label>
+
+  
 </select>
 <button id="form-create-statistics-btn">Opret resultat:</button>
       </form>
@@ -77,19 +77,19 @@
     <div class="grid-container-2">
       <div class="grid-item">
         <h3>Butterfly</h3>
-        <ol id="butterflyList"></ol>
+        <ul id="butterflyList"></ul>
       </div>
       <div class="grid-item">
         <h3>Crawl</h3>
-        <ol id="crawlList"></ol>
+        <ul id="crawlList"></ul>
       </div>
       <div class="grid-item">
         <h3>Rygcrawl</h3>
-        <ol id="rygcrawlList"></ol>
+        <ul id="rygcrawlList"></ul>
       </div>
       <div class="grid-item">
         <h3>Brystsvømning</h3>
-        <ol id="brystsvømningList"></ol>
+        <ul id="brystsvømningList"></ul>
       </div>
     </div>
 

@@ -24,32 +24,42 @@ const exampleResultStructure = {
 };
 let lastTime = 0;
 let swimmers = [];
-const endpoint = "https://delfindaba-16acc-default-rtdb.europe-west1.firebasedatabase.app/";
+
+const endpoint =
+  "https://delfindaba-16acc-default-rtdb.europe-west1.firebasedatabase.app/";
 
 async function getUsers() {
-  // const now = Date.now();
-  // if (now - lastTime > 10000 || swimmers.length === 0) {
-  //   await refetchUserData();
-  // }
-  // const after = Date.now();
-  // console.log("Time to fetch " + (after - now) + " milliseconds");
-  // return swimmers;
-  const response = await fetch(`${endpoint}/participant.json`);
-  const data = await response.json();
-  const users = prepareData(data);
-  // lastTime = Date.now();
-  return users;
+  const now = Date.now();
+  if (now - lastTime > 10000 || swimmers.length === 0) {
+    await refetchUserData();
+  }
+  const after = Date.now();
+  console.log("Time to fetch " + (after - now) + " milliseconds");
+  return swimmers;
 }
 
 async function refetchUserData() {
-  // const response = await fetch(`${endpoint}/participant.json`);
-  // const data = await response.json();
-  // const users = prepareData(data);
-  // lastTime = Date.now();
-  // return users;
+  console.log("Refetch data");
+  const response = await fetch(`${endpoint}/participant.json`);
+  const data = await response.json();
+  swimmers = prepareData(data);
+  lastTime = Date.now();
+  console.log(swimmers);
+  return swimmers;
 }
 
-async function createUser(role, subscription, discipline, age, coachId, firstName, lastName, debt, gender, image) {
+async function createUser(
+  role,
+  subscription,
+  discipline,
+  age,
+  coachId,
+  firstName,
+  lastName,
+  debt,
+  gender,
+  image
+) {
   const jsObject = {
     role,
     subscription,
@@ -71,6 +81,7 @@ async function createUser(role, subscription, discipline, age, coachId, firstNam
   console.log(`response: ${response}`);
   if (response.ok) {
     console.log("created");
+    await refetchUserData();
   }
   return response;
 }
@@ -81,18 +92,31 @@ async function deleteUser(id) {
   });
   if (response.ok) {
     console.log("Deleted");
+    await refetchUserData();
   }
   return response;
 }
 
-async function updateUser(id, role, subscription, discipline, age, coachId, firstName, lastName, debt, gender, image) {
+async function updateUser(
+  id,
+  role,
+  subscription,
+  discipline,
+  age,
+  coach,
+  firstName,
+  lastName,
+  debt,
+  gender,
+  image
+) {
   const userToUpdate = {
     id,
     role,
     subscription,
     discipline,
     age,
-    coachId,
+    coach,
     firstName,
     lastName,
     debt,
@@ -104,6 +128,7 @@ async function updateUser(id, role, subscription, discipline, age, coachId, firs
   const response = await fetch(url, { method: "PUT", body: postAsJson });
   if (response.ok) {
     console.log("updated");
+    await refetchUserData();
   }
   return response;
 }
@@ -116,8 +141,24 @@ async function getResults() {
   return results;
 }
 
-async function createResults(date, discipline, id, meetName, participantId, place, time) {
-  const jsObject = { date, discipline, id, meetName, participantId, place, time };
+async function createResults(
+  date,
+  discipline,
+  id,
+  meetName,
+  participantId,
+  place,
+  time
+) {
+  const jsObject = {
+    date,
+    discipline,
+    id,
+    meetName,
+    participantId,
+    place,
+    time,
+  };
   const postAsJson = JSON.stringify(jsObject);
   console.log(`postAsJson: ${postAsJson}`);
   const response = await fetch(`${endpoint}/results.json`, {
@@ -142,4 +183,12 @@ function prepareData(dataObject) {
   return array;
 }
 
-export { getUsers, createUser, deleteUser, updateUser, getResults, createResults, endpoint };
+export {
+  getUsers,
+  createUser,
+  deleteUser,
+  updateUser,
+  getResults,
+  createResults,
+  endpoint,
+};

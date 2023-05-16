@@ -192,6 +192,7 @@ main {
   transition: 0.5s;
   animation: fadeIn 0.5s;
   border-radius: 15%;
+  background-color: #cadefc;
 }
 
 .grid-item img {
@@ -299,9 +300,10 @@ main {
 #form-create-btn,
 #btn-no,
 .btn-delete,
-.btn-update {
+.btn-update,
+#form-update-btn {
   font-weight: 300;
-  font-size: 1em;
+  font-size: 0.8em;
   text-align: center;
   cursor: pointer;
   border: 2px solid var(--navy);
@@ -315,8 +317,7 @@ main {
   border-radius: 3%;
   border: 2px solid black;
 }
-
-header button {
+´ header button {
   color: var(--navy);
   background-color: var(--purple);
   box-shadow: 1px 1px 8px var(--white);
@@ -330,10 +331,6 @@ input {
   padding: 1em;
   border: 2px solid black;
   background: var(--white);
-}
-
-label {
-  margin-top: 10%;
 }
 
 select {
@@ -444,6 +441,8 @@ button.btn-update:hover {
   display: grid;
   grid-template-columns: 1fr 2fr;
   text-align: left;
+  align-items: center;
+  gap: 3px;
 }
 
 /* input form styling */
@@ -453,3 +452,22 @@ button.btn-update:hover {
   padding: 1em 1em 2em;
   text-align: center;
 }*/
+
+#snackbar {
+  visibility: hidden;
+  min-width: 250px;
+  margin-left: -125px;
+  background-color: #333;
+  color: #fff;
+  text-align: center;
+  border-radius: 2px;
+  padding: 16px;
+  position: fixed;
+  z-index: 1;
+  left: 50%;
+  bottom: 30px;
+}
+
+#snackbar.show {
+  visibility: visible;
+}

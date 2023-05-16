@@ -1,5 +1,12 @@
 import { endpoint } from "./rest.js";
 
+const subscriptions = [
+  { name: "senior", price: 1600 },
+  { name: "junior", price: 1000 },
+  { name: "pensionist", price: 1200 },
+  { name: "passiv", price: 500 },
+];
+
 async function calculateTotalSubscription() {
   const response = await fetch(`${endpoint}/participants/${subscription}.json`);
   const subscription = await response.json();
@@ -12,13 +19,6 @@ async function calculateTotalSubscription() {
 
   return total;
 }
-
-const subscriptions = [
-  { name: "senior", price: 1600 },
-  { name: "junior", price: 1000 },
-  { name: "pensionist", price: 1200 },
-  { name: "passiv", price: 500 },
-];
 
 const totalPrice = await calculateTotalSubscription(subscriptions);
 console.log("Total Price:", totalPrice);

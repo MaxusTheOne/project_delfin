@@ -25,11 +25,12 @@
         <input type="search" id="searchbar" placeholder="Søg efter ..." />
       </div>
       <div>
-        <label for="sort">Sorter:</label>
+        <label for="sort">Filtrer:</label>
         <select id="sort">
-          <option value="" selected>Alle</option>
-          <option value="">etellerandet</option>
-          <option value="">etellerandet2</option>
+          <option value="alle" selected>Alle</option>
+          <option value="svømmer">Svømmere</option>
+          <option value="elitesvømmer">Elitesvømmere</option>
+          <option value="træner">Trænere</option>
         </select>
       </div>
     </div>
@@ -94,9 +95,9 @@
         <label for="gender">Køn:</label>
         <select name="gender" id="create-gender">
           <option value="">Ikke valgt</option selected>
-          <option value="male">Mand</option>
-          <option value="female">Dame</option>
-          <option value="other">Other</option>
+          <option value="mand">Mand</option>
+          <option value="kvinde">Dame</option>
+          <option value="andet">Andet</option>
         </select>
         <label for="subscription">Medlemsskab:</label>
         <select name="subscription" id="create-subscription">
@@ -107,16 +108,16 @@
         <label for="role">Rolle:</label>
         <select name="role" id="create-role">
           <option value="">Ikke valgt</option selected>
-          <option value="proSwimmer">Elitesvømmer </option>
-          <option value="swimmer">Svømmer </option>
+          <option value="elitesvømmer">Elitesvømmer </option>
+          <option value="svømmer">Svømmer </option>
         </select>
         <label for="discipline">Disciplin:</label>
         <select name="discipline" id="create-discipline">
           <option value="">Ikke valgt</option selected>
           <option value="butterfly">Butterfly</option>
           <option value="crawl">Crawl</option>
-          <option value="backstroke">Backcrawl</option>
-          <option value="breaststroke">Breaststroke</option>
+          <option value="rygcrawl">Rygcrawl</option>
+          <option value="brøstsvømning">brøstsvømning</option>
         </select>
         <label for="coach" id="coach-label">Træner:</label>
         <label for="debt">Gæld: </label>
@@ -140,6 +141,7 @@
           id="update-firstName"
           name="firstName"
           placeholder="Opdater fornavn på medlem"
+          required
         />
         <label for="update-lastName">Efternavn:</label>
         <input
@@ -147,6 +149,7 @@
           id="update-lastName"
           name="lastName"
           placeholder="Opdater efternavn på medlem"
+          required
         />
         <label for="update-age">Alder:</label>
         <input
@@ -154,45 +157,40 @@
           id="update-age"
           name="age"
           placeholder="Opdater alder på medlem"
+          required
         />
         <label for="update-gender">Køn:</label>
-        <select name="gender" id="update-gender">
+        <select name="gender" id="update-gender" required>
           <option value="">Ikke valgt</option>
-          <option value="male">Mand</option>
-          <option value="female">Dame</option>
-          <option value="other">Other</option>
+          <option value="mand">Mand</option>
+          <option value="kvinde">Dame</option>
+          <option value="andet">Andet</option>
         </select>
         <label for="update-subscription">Medlemsskab:</label>
-        <select name="subscription" id="update-subscription">
+        <select name="subscription" id="update-subscription" required>
           <option value="">Ikke valgt</option>
           <option value="senior">Senior</option>
           <option value="junior">Junior</option>
         </select>
         <label for="update-debt">Gæld:</label>
-        <input type="text" name="debt" id="update-debt">
+        <input type="text" name="debt" id="update-debt" required>
         <label for="update-role">Rolle:</label>
-        <select name="role" id="update-role">
+        <select name="role" id="update-role" required>
           <option value="">Ikke valgt</option>
-          <option value="proSwimmer">Elitesvømmer </option>
-          <option value="swimmer">Svømmer </option>
+          <option value="elitesvømmer">Elitesvømmer </option>
+          <option value="svømmer">Svømmer </option>
         </select>
         <label for="update-discipline">Disciplin:</label>
-        <select name="discipline" id="update-discipline">
+        <select name="discipline" id="update-discipline" required>
           <option value="">Ikke valgt</option >
           <option value="butterfly">Butterfly</option>
           <option value="crawl">Crawl</option>
-          <option value="backstroke">Backcrawl</option>
-          <option value="breaststroke">Breaststroke</option>
+          <option value="rygcrawl">Rygcrawl</option>
+          <option value="brystsvømning">Brystsvømning</option>
         </select>
-      <label for="coach" id="coach-label">Træner:</label>
-        <select name="coach" id="update-coach">
-          <option value="">Vælg træner</option >
-          <option value="Jason Carter">Jason Carter</option>
-          <option value="Jessica Lee">Jessica Lee</option>
-          <option value="Michael Chen">Michael Chen</option>
-        </select>
+      <label for="coach" id="coach-update-label">Træner:</label>
         <label for="update-image">Image: </label>
-        <input type="url" id="update-image" name="image" placeholder="Sæt IMG URL ind her"/>
+        <input type="url" id="update-image" name="image" placeholder="Sæt IMG URL ind her" required/>
         <button id="form-update-btn">Opdater medlem</button>
       </form>
     </dialog>
