@@ -14,22 +14,10 @@ async function initApp() {
   users = await getUsers();
   updateResultsGrid();
 
-  showRole(
-    document.querySelector("#participantId"),
-    "elitesvømmer",
-    "participantId",
-    "vælg deltager",
-    users
-  );
-  document
-    .querySelector("#create-statistics-btn")
-    .addEventListener("click", showResultsDialog);
-  document
-    .querySelector("#form-create-statistics")
-    .addEventListener("submit", createResultsClicked);
-  document
-    .querySelector("#sortByGender")
-    .addEventListener("change", selectedGender);
+  showRole(document.querySelector("#participantId"), "elitesvømmer", "participantId", "vælg deltager", users);
+  document.querySelector("#create-statistics-btn").addEventListener("click", showResultsDialog);
+  document.querySelector("#form-create-statistics").addEventListener("submit", createResultsClicked);
+  document.querySelector("#sortByGender").addEventListener("change", selectedGender);
   document.querySelector("#sortByAge").addEventListener("change", selectedAge);
 }
 
@@ -49,7 +37,7 @@ async function updateResultsGrid() {
 function showResults(results, discipline) {
   document.querySelector(`#${discipline}List`).innerHTML = "";
   let filteredResults = filterByGender(genderOption, results);
-  //filteredResults = filterByAge(ageOption, results);
+  filteredResults = filterByAge(ageOption, filteredResults);
 
   filteredResults.sort((a, b) => a.time - b.time);
 
@@ -58,14 +46,10 @@ function showResults(results, discipline) {
   for (const result of filteredResults) {
     const participant = findParticipantByID(result.participantId);
     const html = /*HTML*/ `
-        <li> ${convertTime(result.time)}, ${participant.firstName} ${
-      participant.lastName
-    }
+        <li> ${convertTime(result.time)}, ${participant.firstName} ${participant.lastName}
     </li>
 `;
-    document
-      .querySelector(`#${discipline}List`)
-      .insertAdjacentHTML("beforeend", html);
+    document.querySelector(`#${discipline}List`).insertAdjacentHTML("beforeend", html);
   }
 }
 
@@ -80,15 +64,7 @@ async function createResultsClicked(event) {
   const time = form.time.value;
 
   form.reset();
-  const response = await createResults(
-    date,
-    discipline,
-    id,
-    meetName,
-    participantId,
-    place,
-    time
-  );
+  const response = await createResults(date, discipline, id, meetName, participantId, place, time);
   if (response.ok) {
     updateResultsGrid();
   }
@@ -99,9 +75,7 @@ function filterByDiscipline(discipline, results) {
 }
 
 function findParticipantByID(participantId) {
-  const participant = users.find(
-    participants => participants.id == participantId
-  );
+  const participant = users.find(participants => participants.id == participantId);
   return participant;
 }
 
@@ -126,17 +100,12 @@ function selectedAge(event) {
 
 function filterByGender(genderOption, results) {
   if (genderOption === "alle") return results;
-  return results.filter(
-    result => findParticipantByID(result.participantId).gender === genderOption
-  );
+  return results.filter(result => findParticipantByID(result.participantId).gender === genderOption);
 }
 
 function filterByAge(ageOption, results) {
   if (ageOption === "alle") return results;
-  return results.filter(
-    result =>
-      findParticipantByID(result.participantId).subscription === ageOption
-  );
+  return results.filter(result => findParticipantByID(result.participantId).subscription === ageOption);
 }
 
 // function filterByMemberRoles(event) {
