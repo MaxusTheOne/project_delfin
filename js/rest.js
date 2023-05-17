@@ -44,7 +44,7 @@ async function refetchUserData() {
   const data = await response.json();
   swimmers = prepareData(data);
   lastTime = Date.now();
-  console.log(swimmers);
+  // console.log(swimmers);
   return swimmers;
 }
 
@@ -73,12 +73,12 @@ async function createUser(
     image,
   };
   const postAsJson = JSON.stringify(jsObject);
-  console.log(`postAsJson: ${postAsJson}`);
+  // console.log(`postAsJson: ${postAsJson}`);
   const response = await fetch(`${endpoint}/participant.json`, {
     method: "POST",
     body: postAsJson,
   });
-  console.log(`response: ${response}`);
+  // console.log(`response: ${response}`);
   if (response.ok) {
     console.log("created");
     await refetchUserData();
@@ -137,7 +137,7 @@ async function getResults() {
   const response = await fetch(`${endpoint}/results.json`);
   const data = await response.json();
   const results = prepareData(data);
-  console.log(results);
+  // console.log(results);
   return results;
 }
 
@@ -160,12 +160,12 @@ async function createResults(
     time,
   };
   const postAsJson = JSON.stringify(jsObject);
-  console.log(`postAsJson: ${postAsJson}`);
+  // console.log(`postAsJson: ${postAsJson}`);
   const response = await fetch(`${endpoint}/results.json`, {
     method: "POST",
     body: postAsJson,
   });
-  console.log(`response: ${response}`);
+  // console.log(`response: ${response}`);
   if (response.ok) {
     console.log("created");
   }
@@ -191,4 +191,5 @@ export {
   getResults,
   createResults,
   endpoint,
+  refetchUserData,
 };

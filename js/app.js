@@ -6,6 +6,7 @@ import { showRole, getAllRole } from "./sort.js";
 let users;
 let sortType = "normal";
 let filterOption = "alle";
+let teamOption = "";
 
 window.addEventListener("load", initApp);
 
@@ -39,10 +40,11 @@ async function initApp() {
   document
     .querySelector("#form-create-user")
     .addEventListener("submit", createUserClicked);
-
   document
-    .querySelector("#sort")
+    .querySelector("#sortByRole")
     .addEventListener("change", filterByMemberRoles);
+
+  document.querySelector("#sortByTeam").addEventListener("change", teamSelect);
 }
 
 // Search
@@ -71,7 +73,9 @@ async function updateUsersGrid() {
 
 function filterList() {
   const filteredList = getAllRole(users, filterOption);
-  return filteredList;
+  const filteredTeamList = filterByTeam(filteredList);
+
+  return filteredTeamList;
 }
 
 function showCreateUserDialog() {
@@ -113,15 +117,13 @@ async function createUserClicked(event) {
 }
 
 function showUsers(listOfUsers) {
+  console.log(listOfUsers);
   document.querySelector("#users").innerHTML = "";
   listOfUsers.sort((a, b) => {
     if (a.firstName.toLowerCase() < b.firstName.toLowerCase()) return -1;
     else if (a.firstName.toLowerCase() > b.firstName.toLowerCase()) return 1;
     else return 0;
   });
-  if (sortType == "reverse") {
-    listOfUsers.reverse();
-  }
   for (const users of listOfUsers) {
     showUser(users); // for every post object in listOfPosts, call showPost
   }
@@ -132,6 +134,24 @@ function filterByMemberRoles(event) {
   filterOption = role;
   console.log(filterOption);
   updateUsersGrid();
+}
+
+function filterByTeam(list) {
+  console.log(list);
+  if (teamOption != "") {
+    const filterTeam = list.filter(function (user) {
+      return user.subscription == teamOption;
+    });
+    console.log(filterTeam);
+    return filterTeam;
+  } else return list;
+}
+
+function teamSelect(event) {
+  teamOption = event.target.value;
+
+  updateUsersGrid();
+  console.log(teamOption);
 }
 
 function showUser(userObject) {

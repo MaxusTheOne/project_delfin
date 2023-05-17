@@ -1,6 +1,5 @@
 "use strict";
 
-// import { showUser } from "./rest.js";
 function showRole(roleSelector, role, name, defaultText, userList) {
   const allRoles = getAllRole(userList, role);
   const roleConst = role;

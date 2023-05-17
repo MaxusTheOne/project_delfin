@@ -22,14 +22,14 @@
 
       <label for="sortByGender">Køn:</label>
       <select id="sortByGender">
-        <option value="" selected>Begge</option>
-        <option value="herrer">Herrer</option>
-        <option value="damer">Damer</option>
+        <option value="alle" selected>Alle</option>
+        <option value="mand">Herrer</option>
+        <option value="kvinde">Damer</option>
       </select>
 
       <label for="sortByAge">Alder: </label>
       <select id="sortByAge">
-        <option value="" selected>Begge:</option>
+        <option value="alle" selected>Alle:</option>
         <option value="senior">Senior</option>
         <option value="junior">Junior</option>
       </select>
@@ -75,24 +75,23 @@
     </dialog>
 
     <div class="grid-container-2">
-      <div class="grid-item">
+      <div class="grid-item-2">
         <h3>Butterfly</h3>
-        <ul id="butterflyList"></ul>
+        <ol id="butterflyList"></ol>
       </div>
-      <div class="grid-item">
+      <div class="grid-item-2">
         <h3>Crawl</h3>
-        <ul id="crawlList"></ul>
+        <ol id="crawlList"></ol>
       </div>
-      <div class="grid-item">
+      <div class="grid-item-2">
         <h3>Rygcrawl</h3>
-        <ul id="rygcrawlList"></ul>
+        <ol id="rygcrawlList"></ol>
       </div>
-      <div class="grid-item">
+      <div class="grid-item-2">
         <h3>Brystsvømning</h3>
-        <ul id="brystsvømningList"></ul>
+        <ol id="brystsvømningList"></ol>
       </div>
     </div>
-
     <script src="js/statistics.js" type="module"></script>
   </body>
 </html>

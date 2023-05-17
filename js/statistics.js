@@ -5,12 +5,14 @@ import { showRole } from "./sort.js";
 
 let result;
 let users;
+let genderOption = "alle";
+let ageOption = "alle";
 
 window.addEventListener("load", initApp);
 
 async function initApp() {
-  updateResultsGrid();
   users = await getUsers();
+  updateResultsGrid();
 
   showRole(
     document.querySelector("#participantId"),
@@ -25,6 +27,10 @@ async function initApp() {
   document
     .querySelector("#form-create-statistics")
     .addEventListener("submit", createResultsClicked);
+  document
+    .querySelector("#sortByGender")
+    .addEventListener("change", selectedGender);
+  document.querySelector("#sortByAge").addEventListener("change", selectedAge);
 }
 
 function showResultsDialog() {
@@ -42,14 +48,20 @@ async function updateResultsGrid() {
 
 function showResults(results, discipline) {
   document.querySelector(`#${discipline}List`).innerHTML = "";
-  //dom manipulation
+  let filteredResults = filterByGender(genderOption, results);
+  //filteredResults = filterByAge(ageOption, results);
 
-  const filteredResults = filterByDiscipline(discipline, results);
+  filteredResults.sort((a, b) => a.time - b.time);
+
+  filteredResults = filterByDiscipline(discipline, filteredResults);
+  filteredResults = filteredResults.slice(0, 5);
   for (const result of filteredResults) {
+    const participant = findParticipantByID(result.participantId);
     const html = /*HTML*/ `
-        <li>${result.place}, ${result.time}, ${findParticipantByID(
-      result.participantId
-    )}</li>
+        <li> ${convertTime(result.time)}, ${participant.firstName} ${
+      participant.lastName
+    }
+    </li>
 `;
     document
       .querySelector(`#${discipline}List`)
@@ -86,4 +98,54 @@ function filterByDiscipline(discipline, results) {
   return results.filter(result => result.discipline === discipline);
 }
 
-function findParticipantByID() {}
+function findParticipantByID(participantId) {
+  const participant = users.find(
+    participants => participants.id == participantId
+  );
+  return participant;
+}
+
+function convertTime(timeInSeconds) {
+  const minutes = Math.floor(timeInSeconds / 60);
+  const seconds = timeInSeconds % 60;
+
+  return `${minutes} min og ${seconds} sekunder`;
+}
+
+function selectedGender(event) {
+  genderOption = event.target.value;
+  updateResultsGrid();
+  console.log(genderOption);
+}
+
+function selectedAge(event) {
+  ageOption = event.target.value;
+  updateResultsGrid();
+  console.log(ageOption);
+}
+
+function filterByGender(genderOption, results) {
+  if (genderOption === "alle") return results;
+  return results.filter(
+    result => findParticipantByID(result.participantId).gender === genderOption
+  );
+}
+
+function filterByAge(ageOption, results) {
+  if (ageOption === "alle") return results;
+  return results.filter(
+    result =>
+      findParticipantByID(result.participantId).subscription === ageOption
+  );
+}
+
+// function filterByMemberRoles(event) {
+//   const role = event.target.value;
+//   filterOption = role;
+//   console.log(filterOption);
+// }
+
+// function filterList() {
+//   const filteredList = getAllRole(users, filterOption);
+//   return filteredList;
+// }

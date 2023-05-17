@@ -194,6 +194,15 @@ main {
   border-radius: 15%;
   background-color: #cadefc;
 }
+.grid-item-2 {
+  box-shadow: 1px 1px 8px var(--navy);
+  padding: 1.5em;
+  background-color: var(--white);
+  transition: 0.5s;
+  animation: fadeIn 0.5s;
+  border-radius: 2.5%;
+  background-color: #cadefc;
+}
 
 .grid-item img {
   width: 100%;
@@ -342,7 +351,7 @@ select {
   max-width: 350px;
 }
 
-#sort {
+.sort {
   border: 2px solid black;
   margin-left: 0;
 }
