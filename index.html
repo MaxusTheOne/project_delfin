@@ -194,12 +194,23 @@
             <option value="rygcrawl">Rygcrawl</option>
             <option value="brystsvømning">Brystsvømning</option>
           </select>
+          <div>
+          <label for="extra-disclipline">Tilføj extra discliplin</label>
+          <button type="button" id="extra-discipline-button">+</button>
+          </div>
+          <select name="discipline" id="update-discipline" required>
+            <option value="">Ikke valgt</option >
+              <option value="butterfly">Butterfly</option>
+              <option value="crawl">Crawl</option>
+              <option value="rygcrawl">Rygcrawl</option>
+              <option value="brystsvømning">Brystsvømning</option>
+          </select>
           <label for="coach" id="coach-update-label">Træner:</label>
           <label for="update-debt">Gæld:</label>
           <input type="text" name="debt" id="update-debt" required>
           <label for="update-image">Image: </label>
           <input type="url" id="update-image" name="image" placeholder="Sæt IMG URL ind her" required/>
-          <button id="form-update-btn">Opdater medlem</button>
+          <button type="submit" id="form-update-btn">Opdater medlem</button>
       </form>
     </dialog>
 
