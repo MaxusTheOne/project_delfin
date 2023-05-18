@@ -131,42 +131,41 @@ function showUser(userObject) {
 </article>
 `;
   document.querySelector("#users").insertAdjacentHTML("beforeend", html);
-  document.querySelector("#users article:last-child .btn-delete").addEventListener("click", deleteClicked);
-  document.querySelector("#users article:last-child .btn-update").addEventListener("click", updateClicked);
-
+  document.querySelector("#users article:last-child .btn-delete").addEventListener("click", () => deleteClicked(userObject));
+  document.querySelector("#users article:last-child .btn-update").addEventListener("click", () => updateClicked(userObject));
   document.querySelector("#users article:last-child img").addEventListener("click", () => showUserModal(userObject));
-
-  function deleteClicked() {
-    console.log("Knappen Virker");
-    console.log(userObject);
-    document.querySelector("#dialog-delete-user").showModal();
-    document.querySelector("#dialog-delete-user-name").textContent = userObject.firstName;
-    document.querySelector("#form-delete-user").setAttribute("data-id", userObject.id);
-    document.querySelector("#btn-no").addEventListener("click", function () {
-      document.querySelector("#dialog-delete-user").close();
-    });
-    document.querySelector("#form-delete-user").addEventListener("submit", deleteUserClicked);
-  }
-
-  function updateClicked() {
-    document.querySelector("#dialog-update-user").showModal();
-    document.querySelector("#update-firstName").value = userObject.firstName;
-    document.querySelector("#update-lastName").value = userObject.lastName;
-    document.querySelector("#update-age").value = userObject.age;
-    document.querySelector("#update-gender").value = userObject.gender;
-    document.querySelector("#update-subscription").value = userObject.subscription;
-    document.querySelector("#update-role").value = userObject.role;
-    document.querySelector("#update-discipline").value = userObject.discipline;
-    // document.querySelector(`#${userObject.coachId}`);
-    for (const coach of document.querySelectorAll(`.træner${userObject.coachId}`)) {
-      coach.selected = true;
-    }
-    document.querySelector("#update-debt").value = userObject.debt;
-    document.querySelector("#update-image").value = userObject.image;
-    document.querySelector("#form-update-user").setAttribute("data-id", userObject.id);
-    document.querySelector("#form-update-user").addEventListener("submit", updateUserClicked);
-  }
 }
+
+function updateClicked(userObject) {
+  document.querySelector("#dialog-update-user").showModal();
+  document.querySelector("#update-firstName").value = userObject.firstName;
+  document.querySelector("#update-lastName").value = userObject.lastName;
+  document.querySelector("#update-age").value = userObject.age;
+  document.querySelector("#update-gender").value = userObject.gender;
+  document.querySelector("#update-subscription").value = userObject.subscription;
+  document.querySelector("#update-role").value = userObject.role;
+  document.querySelector("#update-discipline").value = userObject.discipline;
+  // document.querySelector(`#${userObject.coachId}`);
+  for (const coach of document.querySelectorAll(`.træner${userObject.coachId}`)) {
+    coach.selected = true;
+  }
+  document.querySelector("#update-debt").value = userObject.debt;
+  document.querySelector("#update-image").value = userObject.image;
+  document.querySelector("#form-update-user").setAttribute("data-id", userObject.id);
+  document.querySelector("#form-update-user").addEventListener("submit", updateUserClicked);
+}
+
+function deleteClicked(userObject) {
+  console.log("Knappen Virker");
+  document.querySelector("#dialog-delete-user").showModal();
+  document.querySelector("#dialog-delete-user-name").textContent = userObject.firstName;
+  document.querySelector("#form-delete-user").setAttribute("data-id", userObject.id);
+  document.querySelector("#btn-no").addEventListener("click", function () {
+    document.querySelector("#dialog-delete-user").close();
+  });
+  document.querySelector("#form-delete-user").addEventListener("submit", deleteUserClicked);
+}
+
 async function deleteUserClicked(event) {
   event.preventDefault();
   const form = event.target;
