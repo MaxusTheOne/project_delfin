@@ -13,36 +13,14 @@ window.addEventListener("load", initApp);
 async function initApp() {
   console.log("js is working");
   await updateUsersGrid();
-  document
-    .querySelector("#searchbar")
-    .addEventListener("keyup", inputSearchChanged);
-  document
-    .querySelector("#searchbar")
-    .addEventListener("search", inputSearchChanged);
-  showRole(
-    document.querySelector("#coach-label"),
-    "træner",
-    "coach",
-    "Vælg træner",
-    users
-  );
-  showRole(
-    document.querySelector("#coach-update-label"),
-    "træner",
-    "coach",
-    "Vælg træner",
-    users
-  );
+  document.querySelector("#searchbar").addEventListener("keyup", inputSearchChanged);
+  document.querySelector("#searchbar").addEventListener("search", inputSearchChanged);
+  showRole(document.querySelector("#coach-label"), "træner", "coach", "Vælg træner", users);
+  showRole(document.querySelector("#coach-update-label"), "træner", "coach", "Vælg træner", users);
 
-  document
-    .querySelector("#create-user-btn")
-    .addEventListener("click", showCreateUserDialog);
-  document
-    .querySelector("#form-create-user")
-    .addEventListener("submit", createUserClicked);
-  document
-    .querySelector("#sortByRole")
-    .addEventListener("change", filterByMemberRoles);
+  document.querySelector("#create-user-btn").addEventListener("click", showCreateUserDialog);
+  document.querySelector("#form-create-user").addEventListener("submit", createUserClicked);
+  document.querySelector("#sortByRole").addEventListener("change", filterByMemberRoles);
 
   document.querySelector("#sortByTeam").addEventListener("change", teamSelect);
 }
@@ -57,11 +35,7 @@ function inputSearchChanged(event) {
 function searchUsers(search) {
   search = search.toLowerCase().trim();
   console.log(search);
-  const results = users.filter(
-    user =>
-      user.firstName.toLowerCase().trim().includes(search) ||
-      user.lastName.toLowerCase().trim().includes(search)
-  );
+  const results = users.filter((user) => user.firstName.toLowerCase().trim().includes(search) || user.lastName.toLowerCase().trim().includes(search));
   return results;
 }
 
@@ -95,18 +69,7 @@ async function createUserClicked(event) {
   const image = form.image.value;
   const debt = form.debt.value;
   form.reset();
-  const response = await createUser(
-    role,
-    subscription,
-    discipline,
-    age,
-    coach,
-    firstName,
-    lastName,
-    debt,
-    gender,
-    image
-  );
+  const response = await createUser(role, subscription, discipline, age, coach, firstName, lastName, debt, gender, image);
   if (response.ok) {
     showSnackbar("Bruger oprettet");
     updateUsersGrid();
@@ -168,32 +131,21 @@ function showUser(userObject) {
 </article>
 `;
   document.querySelector("#users").insertAdjacentHTML("beforeend", html);
-  document
-    .querySelector("#users article:last-child .btn-delete")
-    .addEventListener("click", deleteClicked);
-  document
-    .querySelector("#users article:last-child .btn-update")
-    .addEventListener("click", updateClicked);
+  document.querySelector("#users article:last-child .btn-delete").addEventListener("click", deleteClicked);
+  document.querySelector("#users article:last-child .btn-update").addEventListener("click", updateClicked);
 
-  document
-    .querySelector("#users article:last-child img")
-    .addEventListener("click", () => showUserModal(userObject));
+  document.querySelector("#users article:last-child img").addEventListener("click", () => showUserModal(userObject));
 
   function deleteClicked() {
     console.log("Knappen Virker");
     console.log(userObject);
     document.querySelector("#dialog-delete-user").showModal();
-    document.querySelector("#dialog-delete-user-name").textContent =
-      userObject.firstName;
-    document
-      .querySelector("#form-delete-user")
-      .setAttribute("data-id", userObject.id);
+    document.querySelector("#dialog-delete-user-name").textContent = userObject.firstName;
+    document.querySelector("#form-delete-user").setAttribute("data-id", userObject.id);
     document.querySelector("#btn-no").addEventListener("click", function () {
       document.querySelector("#dialog-delete-user").close();
     });
-    document
-      .querySelector("#form-delete-user")
-      .addEventListener("submit", deleteUserClicked);
+    document.querySelector("#form-delete-user").addEventListener("submit", deleteUserClicked);
   }
 
   function updateClicked() {
@@ -202,24 +154,17 @@ function showUser(userObject) {
     document.querySelector("#update-lastName").value = userObject.lastName;
     document.querySelector("#update-age").value = userObject.age;
     document.querySelector("#update-gender").value = userObject.gender;
-    document.querySelector("#update-subscription").value =
-      userObject.subscription;
+    document.querySelector("#update-subscription").value = userObject.subscription;
     document.querySelector("#update-role").value = userObject.role;
     document.querySelector("#update-discipline").value = userObject.discipline;
     // document.querySelector(`#${userObject.coachId}`);
-    for (const coach of document.querySelectorAll(
-      `.træner${userObject.coachId}`
-    )) {
+    for (const coach of document.querySelectorAll(`.træner${userObject.coachId}`)) {
       coach.selected = true;
     }
     document.querySelector("#update-debt").value = userObject.debt;
     document.querySelector("#update-image").value = userObject.image;
-    document
-      .querySelector("#form-update-user")
-      .setAttribute("data-id", userObject.id);
-    document
-      .querySelector("#form-update-user")
-      .addEventListener("submit", updateUserClicked);
+    document.querySelector("#form-update-user").setAttribute("data-id", userObject.id);
+    document.querySelector("#form-update-user").addEventListener("submit", updateUserClicked);
   }
 }
 async function deleteUserClicked(event) {
@@ -252,19 +197,7 @@ async function updateUserClicked(event) {
   const image = form.image.value;
   const debt = form.debt.value;
   form.reset();
-  const response = await updateUser(
-    id,
-    role,
-    subscription,
-    discipline,
-    age,
-    coach,
-    firstName,
-    lastName,
-    debt,
-    gender,
-    image
-  );
+  const response = await updateUser(id, role, subscription, discipline, age, coach, firstName, lastName, debt, gender, image);
   if (response.ok) {
     showSnackbar("Bruger opdateret");
     updateUsersGrid();
@@ -277,11 +210,8 @@ async function updateUserClicked(event) {
 
 function showUserModal(user) {
   document.querySelector("#dialog-age").textContent = user.age + " år gammel";
-  document.querySelector(
-    "#dialog-name"
-  ).textContent = `${user.firstName} ${user.lastName}`;
-  document.querySelector("#dialog-subscription").textContent =
-    user.subscription;
+  document.querySelector("#dialog-name").textContent = `${user.firstName} ${user.lastName}`;
+  document.querySelector("#dialog-subscription").textContent = user.subscription;
   document.querySelector("#dialog-role").textContent = user.role;
   document.querySelector("#dialog-discipline").textContent = user.discipline;
   document.querySelector("#dialog-gender").textContent = user.gender;
