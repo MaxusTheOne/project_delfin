@@ -76,26 +76,44 @@
       <h2>Tilføj medlem:</h2>
       <form id="form-create-user" method="dialog">
         <label for="firstName">Fornavn:</label>
-        <input type="text" id="create-firstName" name="firstName" placeholder="Skriv fornavn på medlem" />
+        <input
+          type="text"
+          id="create-firstName"
+          name="firstName"
+          placeholder="Skriv fornavn på medlem"
+          required
+        />
         <label for="lastName">Efternavn:</label>
-        <input type="text" id="create-lastName" name="lastName" placeholder="Skriv efternavn på medlem" />
+        <input
+          type="text"
+          id="create-lastName"
+          name="lastName"
+          placeholder="Skriv efternavn på medlem"
+          required
+        />
         <label for="age">Alder:</label>
-        <input type="text" id="create-age" name="age" placeholder="Skriv alder på medlem" />
+        <input
+          type="number"
+          id="create-age"
+          name="age"
+          placeholder="Skriv alder på medlem"
+          required
+        />
         <label for="gender">Køn:</label>
-        <select name="gender" id="create-gender">
+        <select name="gender" id="create-gender" required>
           <option value="" selected>Ikke valgt</option>
           <option value="mand">Mand</option>
           <option value="kvinde">Kvinde</option>
           <option value="andet">Andet</option>
         </select>
         <label for="subscription">Medlemsskab:</label>
-        <select name="subscription" id="create-subscription">
+        <select name="subscription" id="create-subscription" required>
           <option value="" selected>Ikke valgt</option>
           <option value="senior">Senior</option>
           <option value="junior">Junior</option>
         </select>
         <label for="role">Rolle:</label>
-        <select name="role" id="create-role">
+        <select name="role" id="create-role" required>
           <option value="" selected>Ikke valgt</option>
           <option value="elitesvømmer">Elitesvømmer</option>
           <option value="svømmer">Svømmer</option>
@@ -111,9 +129,20 @@
         </select>
         <label for="coach" id="coach-label">Træner:</label>
         <label for="debt">Gæld: </label>
-        <input type="text" id="create-debt" name="debt" placeholder="Skriv gæld" />
+        <input
+          type="text"
+          id="create-debt"
+          name="debt"
+          placeholder="Skriv gæld"
+        />
         <label for="image">Image: </label>
-        <input type="url" id="create-image" name="image" placeholder="Sæt IMG URL ind her" />
+        <input
+          type="url"
+          id="create-image"
+          name="image"
+          placeholder="Sæt IMG URL ind her"
+          required
+        />
         <button id="form-create-btn">Opret medlem</button>
       </form>
     </dialog>
@@ -126,11 +155,29 @@
       <h2>Opdater medlem</h2>
       <form id="form-update-user" method="dialog">
         <label for="update-firstName">Fornavn:</label>
-        <input type="text" id="update-firstName" name="firstName" placeholder="Opdater fornavn på medlem" required />
+        <input
+          type="text"
+          id="update-firstName"
+          name="firstName"
+          placeholder="Opdater fornavn på medlem"
+          required
+        />
         <label for="update-lastName">Efternavn:</label>
-        <input type="text" id="update-lastName" name="lastName" placeholder="Opdater efternavn på medlem" required />
+        <input
+          type="text"
+          id="update-lastName"
+          name="lastName"
+          placeholder="Opdater efternavn på medlem"
+          required
+        />
         <label for="update-age">Alder:</label>
-        <input type="text" id="update-age" name="age" placeholder="Opdater alder på medlem" required />
+        <input
+          type="number"
+          id="update-age"
+          name="age"
+          placeholder="Opdater alder på medlem"
+          required
+        />
         <label for="update-gender">Køn:</label>
         <select name="gender" id="update-gender" required>
           <option value="">Ikke valgt</option>
@@ -152,7 +199,7 @@
           <option value="træner">Træner</option>
         </select>
         <label for="update-discipline">Disciplin:</label>
-        <select name="discipline" id="update-discipline" required>
+        <select name="discipline" id="update-discipline">
           <option value="">Ikke valgt</option>
           <option value="butterfly">Butterfly</option>
           <option value="crawl">Crawl</option>
@@ -163,7 +210,7 @@
           <label for="extra-disclipline">Tilføj extra discliplin</label>
           <button type="button" id="extra-discipline-button">+</button>
         </div>
-        <select name="discipline" id="update-discipline" required>
+        <select name="discipline" id="update-discipline">
           <option value="">Ikke valgt</option>
           <option value="butterfly">Butterfly</option>
           <option value="crawl">Crawl</option>
@@ -172,9 +219,15 @@
         </select>
         <label for="coach" id="coach-update-label">Træner:</label>
         <label for="update-debt">Gæld:</label>
-        <input type="text" name="debt" id="update-debt" required />
+        <input type="text" name="debt" id="update-debt" />
         <label for="update-image">Image: </label>
-        <input type="url" id="update-image" name="image" placeholder="Sæt IMG URL ind her" required />
+        <input
+          type="url"
+          id="update-image"
+          name="image"
+          placeholder="Sæt IMG URL ind her"
+          required
+        />
         <button type="submit" id="form-update-btn">Opdater medlem</button>
       </form>
     </dialog>
