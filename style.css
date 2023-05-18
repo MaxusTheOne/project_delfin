@@ -118,8 +118,10 @@ main {
 }
 
 .filter-grid-2 {
-  border-bottom: 1.5px solid black;
-  box-shadow: 1px 1px 8px rgba(0, 0, 0, 0.25);
+  display: flex;
+  padding: 1em;
+  justify-content: space-between;
+  align-items: center;
 }
 
 /* fade in */
@@ -326,7 +328,23 @@ main {
   border-radius: 3%;
   border: 2px solid black;
 }
-´ header button {
+#create-statistics-btn {
+  font-weight: 300;
+  font-size: 0.8em;
+  text-align: center;
+  cursor: pointer;
+  border: 2px solid var(--navy);
+  color: var(--text-color-light);
+  background-color: var(--navy);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  padding: 0.5em 1em;
+  width: 7.5%;
+  max-width: 380px;
+  border-radius: 3%;
+  border: 2px solid black;
+}
+header button {
   color: var(--navy);
   background-color: var(--purple);
   box-shadow: 1px 1px 8px var(--white);
@@ -353,14 +371,6 @@ select {
 
 .sort {
   border: 2px solid black;
-  margin-left: 0;
-}
-
-#sortByGender {
-  margin-left: 0;
-}
-
-#sortByAge {
   margin-left: 0;
 }
 
