@@ -234,9 +234,6 @@ main {
   box-shadow: 0 8px 32px 2px;
 }
 
-#form-create-user > input[type="submit"] {
-  border-radius: 80%;
-}
 .grid-item p {
   margin: 0.3em 0;
 }
@@ -308,11 +305,10 @@ main {
 }
 
 #create-user-btn,
-#form-create-btn,
 #btn-no,
+#btn-yes,
 .btn-delete,
-.btn-update,
-#form-update-btn {
+.btn-update {
   font-weight: 300;
   font-size: 0.8em;
   text-align: center;
@@ -328,6 +324,7 @@ main {
   border-radius: 3%;
   border: 2px solid black;
 }
+
 #create-statistics-btn {
   font-weight: 300;
   font-size: 0.8em;
@@ -349,10 +346,6 @@ header button {
   background-color: var(--purple);
   box-shadow: 1px 1px 8px var(--white);
   padding: 20px 10px;
-}
-
-form button {
-  grid-column: 1 / 3;
 }
 
 #searchbar {
@@ -409,7 +402,7 @@ dialog {
 }
 
 #dialog-create-statistics {
-  top: 20%;
+  top: 50%;
 }
 
 dialog::backdrop {
@@ -469,12 +462,26 @@ button.btn-update:hover {
   width: 90%;
 }
 
-#form-create-user,
-#form-update-user {
-  margin: 2em auto 0;
-  background-color: var(--light-green);
-  padding: 1em 1em 2em;
+/* FORM STYLING */
 
+#form-create-btn,
+#form-update-btn,
+#form-create-statistics-btn {
+  border-radius: 3%;
+  border: 2px solid black;
+  padding: 1.5em 1em;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--text-color-light);
+  background-color: var(--navy);
+  margin-top: 1em;
+}
+
+#form-create-user,
+#form-update-user,
+#form-create-statistics {
+  background-color: var(--light-green);
+  padding: 1em 2em;
   font-size: larger;
   display: grid;
   grid-template-columns: 1fr 2fr;
@@ -493,6 +500,17 @@ button.btn-update:hover {
   grid-template-columns: 1fr 2fr;
 }
 
+form label {
+  margin-bottom: 0.5em;
+}
+
+form button {
+  grid-column: 1 / 3;
+}
+
+#form-create-user > input[type="submit"] {
+  border-radius: 80%;
+}
 /* input form styling */
 /*form {
   margin: 2em auto 0;
@@ -500,6 +518,8 @@ button.btn-update:hover {
   padding: 1em 1em 2em;
   text-align: center;
 }*/
+
+/* SNACKBAR STYLING */
 
 #snackbar {
   visibility: hidden;
