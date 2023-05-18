@@ -46,7 +46,7 @@ function showResults(results, discipline) {
   for (const result of filteredResults) {
     const participant = findParticipantByID(result.participantId);
     const html = /*HTML*/ `
-        <li> ${convertTime(result.time)}, ${participant.firstName} ${participant.lastName}
+        <li> ${result.place}. plads, ${convertTime(result.time)}, ${participant.firstName} ${participant.lastName}
     </li>
 `;
     document.querySelector(`#${discipline}List`).insertAdjacentHTML("beforeend", html);
@@ -71,11 +71,11 @@ async function createResultsClicked(event) {
 }
 
 function filterByDiscipline(discipline, results) {
-  return results.filter(result => result.discipline === discipline);
+  return results.filter((result) => result.discipline === discipline);
 }
 
 function findParticipantByID(participantId) {
-  const participant = users.find(participants => participants.id == participantId);
+  const participant = users.find((participants) => participants.id == participantId);
   return participant;
 }
 
@@ -100,21 +100,10 @@ function selectedAge(event) {
 
 function filterByGender(genderOption, results) {
   if (genderOption === "alle") return results;
-  return results.filter(result => findParticipantByID(result.participantId).gender === genderOption);
+  return results.filter((result) => findParticipantByID(result.participantId).gender === genderOption);
 }
 
 function filterByAge(ageOption, results) {
   if (ageOption === "alle") return results;
-  return results.filter(result => findParticipantByID(result.participantId).subscription === ageOption);
+  return results.filter((result) => findParticipantByID(result.participantId).subscription === ageOption);
 }
-
-// function filterByMemberRoles(event) {
-//   const role = event.target.value;
-//   filterOption = role;
-//   console.log(filterOption);
-// }
-
-// function filterList() {
-//   const filteredList = getAllRole(users, filterOption);
-//   return filteredList;
-// }
