@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Svømmestatistik</title>
     <link rel="stylesheet" href="style.css" />
-    <link rel="shortcut icon" href="delfinpng.png" type="image/x-icon">
+    <link rel="shortcut icon" href="delfinpng.png" type="image/x-icon" />
   </head>
   <body>
     <header>
@@ -20,19 +20,19 @@
     <div class="filter-grid-2">
       <button id="create-statistics-btn">Create</button>
 
-     <div>
-      <label for="sort">Fitrer:</label>
-      <select id="sortByGender" class="sort">
-        <option value="alle" selected>Køn</option>
-        <option value="mand">Herrer</option>
-        <option value="kvinde">Damer</option>
-      </select>
-<label for="sort"></label>
-      <select id="sortByAge" class="sort">
-        <option value="alle" selected>Alder:</option>
-        <option value="senior">Senior</option>
-        <option value="junior">Junior</option>
-      </select>
+      <div>
+        <label for="sort">Fitrer:</label>
+        <select id="sortByGender" class="sort">
+          <option value="alle" selected>Køn</option>
+          <option value="mand">Herrer</option>
+          <option value="kvinde">Damer</option>
+        </select>
+        <label for="sort"></label>
+        <select id="sortByAge" class="sort">
+          <option value="alle" selected>Alder:</option>
+          <option value="senior">Senior</option>
+          <option value="junior">Junior</option>
+        </select>
       </div>
     </div>
 
@@ -44,31 +44,30 @@
       <h2>Tilføj svømmeresultat:</h2>
       <form method="dialog" id="form-create-statistics">
         <label for="meetName">Stævne:</label>
-        <input type="text" id="statistics-meetName" name="meetName" placeholder="Skriv stævnenavn">
+        <input type="text" id="statistics-meetName" name="meetName" placeholder="Skriv stævnenavn" />
         <label for="date">Dato:</label>
-        <input type="date" id="statistics-date" name="date"
-        value="" min="2016-01-01" max="2023-12-31">
+        <input type="date" id="statistics-date" name="date" value="" min="2016-01-01" max="2023-12-31" />
         <label for="place">Plads:</label>
-   <select name="place" id="statistics-place">
-    <option value="">Ikke valgt</option selected>
-    <option value="1">1</option>
-    <option value="2">2</option>
-    <option value="3">3</option>
-    <option value="4">4</option>
-    <option value="5">5</option>
-   </select>
+        <select name="place" id="statistics-place">
+          <option value="" selected>Ikke valgt</option>
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+        </select>
         <label for="time">Tid:</label>
         <input type="text" id="statistics-time" name="time" placeholder="Skriv resultat" />
         <label for="discipline">Disciplin:</label>
-  <select name="discipline" id="statistics-discipline">
-    <option value="">Ikke valgt</option selected>
-    <option value="butterfly">Butterfly</option>
-    <option value="crawl">Crawl</option>
-    <option value="rygcrawl">Rygcrawl</option>
-    <option value="brystsvømning">Brystsvømning</option>
-  </select>
-  <label for="participantId" id="participantId">Deltager ID: </label>
-<button id="form-create-statistics-btn">Opret resultat:</button>
+        <select name="discipline" id="statistics-discipline">
+          <option value="" selected>Ikke valgt</option>
+          <option value="butterfly">Butterfly</option>
+          <option value="crawl">Crawl</option>
+          <option value="rygcrawl">Rygcrawl</option>
+          <option value="brystsvømning">Brystsvømning</option>
+        </select>
+        <label for="participantId" id="participantId">Deltager ID: </label>
+        <button id="form-create-statistics-btn">Opret resultat:</button>
       </form>
     </dialog>
 
