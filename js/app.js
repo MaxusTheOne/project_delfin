@@ -35,7 +35,7 @@ function inputSearchChanged(event) {
 function searchUsers(search) {
   search = search.toLowerCase().trim();
   console.log(search);
-  const results = users.filter((user) => user.firstName.toLowerCase().trim().includes(search) || user.lastName.toLowerCase().trim().includes(search));
+  const results = users.filter(user => user.firstName.toLowerCase().trim().includes(search) || user.lastName.toLowerCase().trim().includes(search));
   return results;
 }
 
@@ -144,7 +144,7 @@ function updateClicked(userObject) {
   document.querySelector("#update-gender").value = userObject.gender;
   document.querySelector("#update-subscription").value = userObject.subscription;
   document.querySelector("#update-role").value = userObject.role;
-  document.querySelector("#update-discipline").value = userObject.discipline;
+  document.querySelector("#discipline-output").textContent = userObject.discipline;
   // document.querySelector(`#${userObject.coachId}`);
   for (const coach of document.querySelectorAll(`.træner${userObject.coachId}`)) {
     coach.selected = true;
@@ -152,7 +152,15 @@ function updateClicked(userObject) {
   document.querySelector("#update-debt").value = userObject.debt;
   document.querySelector("#update-image").value = userObject.image;
   document.querySelector("#form-update-user").setAttribute("data-id", userObject.id);
+  document.querySelector("#extra-discipline-btn").addEventListener("click", addDisciplineToOutput);
   document.querySelector("#form-update-user").addEventListener("submit", updateUserClicked);
+}
+function addDisciplineToOutput() {
+  console.log("addToOutput");
+  const disciplineValue = document.querySelector("#update-discipline").value;
+  const outputSelector = document.querySelector("#discipline-output");
+  let text;
+  if (disciplineValue != "") outputSelector.textContent += disciplineValue + ", ";
 }
 
 function deleteClicked(userObject) {
