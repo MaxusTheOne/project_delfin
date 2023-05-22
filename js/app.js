@@ -322,10 +322,20 @@ function showUserModal(user) {
     "#dialog-name"
   ).textContent = `${user.firstName} ${user.lastName}`;
   document.querySelector("#dialog-subscription").textContent =
-    user.subscription;
-  document.querySelector("#dialog-role").textContent = user.role;
-  document.querySelector("#dialog-discipline").textContent = user.discipline;
-  document.querySelector("#dialog-gender").textContent = user.gender;
+    capitalizeFirstLetter(user.subscription);
+  document.querySelector("#dialog-role").textContent = capitalizeFirstLetter(
+    user.role
+  );
+  if (document.querySelector("#dialog-discipline").textContent != "")
+    document.querySelector("#dialog-discipline").textContent =
+      capitalizeFirstLetter(user.discipline);
+  else
+    document.querySelector(
+      "#dialog-member-info > section > section > ul > li:nth-child(3)"
+    ).hidden;
+  document.querySelector("#dialog-gender").textContent = capitalizeFirstLetter(
+    user.gender
+  );
   document.querySelector("#dialog-image").src = user.image;
 
   console.log("");
@@ -340,4 +350,7 @@ function showSnackbar(message) {
   setTimeout(() => {
     snackbarSelector.classList.remove("show");
   }, 3000);
+}
+function capitalizeFirstLetter(string) {
+  return string.charAt(0).toUpperCase() + string.slice(1);
 }

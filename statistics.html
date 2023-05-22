@@ -18,7 +18,7 @@
     </header>
 
     <div class="filter-grid-2">
-      <button id="create-statistics-btn">Create</button>
+      <button id="create-statistics-btn">Opret resultat</button>
 
       <div>
         <label for="sort">Fitrer:</label>
@@ -44,9 +44,21 @@
       <h2>Tilføj svømmeresultat:</h2>
       <form method="dialog" id="form-create-statistics">
         <label for="meetName">Stævne:</label>
-        <input type="text" id="statistics-meetName" name="meetName" placeholder="Skriv stævnenavn" />
+        <input
+          type="text"
+          id="statistics-meetName"
+          name="meetName"
+          placeholder="Skriv stævnenavn"
+        />
         <label for="date">Dato:</label>
-        <input type="date" id="statistics-date" name="date" value="" min="2016-01-01" max="2023-12-31" />
+        <input
+          type="date"
+          id="statistics-date"
+          name="date"
+          value=""
+          min="2016-01-01"
+          max="2023-12-31"
+        />
         <label for="place">Plads:</label>
         <select name="place" id="statistics-place">
           <option value="" selected>Ikke valgt</option>
@@ -57,7 +69,12 @@
           <option value="5">5</option>
         </select>
         <label for="time">Tid:</label>
-        <input type="text" id="statistics-time" name="time" placeholder="Skriv resultat" />
+        <input
+          type="text"
+          id="statistics-time"
+          name="time"
+          placeholder="Skriv resultat"
+        />
         <label for="discipline">Disciplin:</label>
         <select name="discipline" id="statistics-discipline">
           <option value="" selected>Ikke valgt</option>

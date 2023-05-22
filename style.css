@@ -1,41 +1,18 @@
-/* root variables */
-/* :root {
-  --navy: #defcf9;
-  --purple: #cadefc;
-  --pink: #c3bef0;
-  --text-color-light: #f1f1f1;
-  --text-color-dark: #333;
-  --white: rgb(253, 226, 243);
-  --font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-}
-*/
-
-/* .first-color { 
-	background: #defcf9; 
-}
-	
-.second-color { 
-	background: #cadefc; 
-}
-
-.third-color { 
-	background: #c3bef0; 
-}
-
-.fourth-color { 
-	background: #cca8e9;  */
-
-html {
-  background-color: #defcf9;
-  color: var(--text-color-dark);
-  font-family: var(--font-family);
-  height: 100%;
-  width: 100%;
-}
+@import url("https://fonts.googleapis.com/css2?family=Montserrat&display=swap");
 
 body {
   margin: 0;
   font-size: 1.2em;
+  background-image: url(https://wallpapers.com/images/featured/am94qlj0a89gmo8j.jpg);
+  background-repeat: repeat;
+}
+a {
+  color: black;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
 }
 
 h1 {
@@ -57,11 +34,6 @@ h3 {
   letter-spacing: 0.1px;
 }
 
-a {
-  cursor: pointer;
-  color: var(--navy);
-}
-
 img {
   width: 100%;
   height: auto;
@@ -71,14 +43,14 @@ img {
 header {
   border-bottom: 2px solid black;
   box-shadow: 1px 1px 8px rgba(0, 0, 0, 0.25);
-  background-color: #cadefc;
+  background: linear-gradient(to bottom, #87ceeb, #0066cc);
   padding: 2em;
   display: flex;
   grid-template-columns: 1fr;
   gap: 1em;
   justify-content: space-evenly;
   align-items: center;
-  font-family: sans-serif;
+  /* font-family: sans-serif; */
   word-spacing: 1.5em;
   letter-spacing: 1px;
 }
@@ -86,7 +58,7 @@ header {
 /* footer styling */
 
 footer {
-  background-color: #c3bef0;
+  background: linear-gradient(to top, #87ceeb, #0066cc);
   color: var(--text-color-dark);
   padding: 1em;
   text-align: center;
@@ -191,20 +163,18 @@ main {
 .grid-item {
   box-shadow: 1px 1px 8px var(--navy);
   padding: 1.5em;
-  background-color: var(--white);
+  background-color: hsla(200, 84%, 71%, 0.9);
   transition: 0.5s;
   animation: fadeIn 0.5s;
   border-radius: 15%;
-  background-color: #cadefc;
 }
 .grid-item-2 {
   box-shadow: 1px 1px 8px var(--navy);
   padding: 1.5em;
-  background-color: var(--white);
+  background-color: hsla(200, 84%, 71%, 0.9);
   transition: 0.5s;
   animation: fadeIn 0.5s;
   border-radius: 2.5%;
-  background-color: #cadefc;
 }
 
 .grid-item img {
@@ -215,19 +185,19 @@ main {
 }
 
 .grid-item-user {
-  box-shadow: 1px 1px 8px var(--navy);
-  padding: 1.5em;
-  background-color: #cadefc;
+  box-shadow: 1px 1px 8px;
+  padding: 0.85em;
+  background-color: hsla(200, 84%, 71%, 0.9);
   transition: 0.5s;
   animation: fadeIn 0.5s;
-  border-radius: 10%;
+  border-radius: 1em;
 }
 
 .grid-item-user img {
   width: 100%;
   height: 400px;
   object-fit: cover;
-  border-radius: 10%;
+  border-radius: 1em;
   cursor: pointer;
 }
 
@@ -281,18 +251,6 @@ main {
   box-shadow: 0px 1px 0px 0px;
 }
 
-/* VED IKKE HELT HVAD DET HER ER, SÅ UDKOMMENTERER DET LIGE
-.navy {
-  background-color: var(--navy);
-  box-shadow: 3px 5px 5px var(--white);
-  padding: 20px 0px;
-}
-
-.navy:hover {
-  background-color: var(--purple);
-  padding: 20px 60px;
-} */
-
 #dialog-close-btn {
   position: fixed;
   cursor: pointer;
@@ -312,7 +270,6 @@ main {
   border-radius: 8px;
 }
 
-#create-user-btn,
 #btn-no,
 #btn-yes,
 .btn-delete,
@@ -321,9 +278,25 @@ main {
   font-size: 0.8em;
   text-align: center;
   cursor: pointer;
-  border: 2px solid var(--navy);
+  border: 2px solid;
   color: var(--text-color-light);
   background-color: var(--navy);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  padding: 0.5em 1em;
+  width: 80%;
+  max-width: 380px;
+  border-radius: 3%;
+  border: 2px solid black;
+}
+
+#create-user-btn {
+  font-weight: 300;
+  font-size: 0.8em;
+  text-align: center;
+  cursor: pointer;
+  border: 2px solid;
+  background-color: hsla(200, 84%, 71%, 0.75);
   letter-spacing: 0.05em;
   text-transform: uppercase;
   padding: 0.5em 1em;
@@ -338,18 +311,17 @@ main {
   font-size: 0.8em;
   text-align: center;
   cursor: pointer;
-  border: 2px solid var(--navy);
-  color: var(--text-color-light);
-  background-color: var(--navy);
+  border: 2px solid;
+  background-color: hsla(200, 84%, 71%, 0.75);
   letter-spacing: 0.05em;
   text-transform: uppercase;
-  padding: 1em;
-  max-width: 380px;
+  padding: 0.6em;
+  width: 80%;
+  max-width: 140px;
   border-radius: 3%;
   border: 2px solid black;
 }
 header button {
-  color: var(--navy);
   background-color: var(--purple);
   box-shadow: 1px 1px 8px var(--white);
   padding: 20px 10px;
@@ -362,6 +334,7 @@ header button {
   padding: 1em;
   border: 2px solid black;
   background: var(--white);
+  background-color: hsla(200, 84%, 71%, 0.4);
 }
 
 dialog input,
@@ -377,7 +350,6 @@ dialog select {
 select {
   background-color: var(--navy);
   border: none;
-  color: var(--text-color-light);
   padding: 1em;
   max-width: 350px;
 }
@@ -385,13 +357,14 @@ select {
 .sort {
   border: 2px solid black;
   margin-left: 0;
+  background-color: hsla(200, 84%, 71%, 0.75);
 }
 
 /* dialog styling */
 
 dialog {
   border-color: var(--navy);
-  background-color: #c3bef0;
+  background: linear-gradient(to bottom, #87ceeb, #0066cc);
   position: fixed;
   top: 90vh;
   max-height: 88vh;
@@ -440,7 +413,6 @@ button.btn-update:hover {
 }
 
 #create-user-btn:hover,
-#dialog-close-btn:hover,
 #form-create-btn:hover,
 #form-update-btn:hover,
 #create-statistics-btn:hover,
@@ -448,12 +420,16 @@ button.btn-update:hover {
 #btn-no:hover,
 #btn-yes:hover {
   box-shadow: 0 4px 8px 2px;
+  background-color: hsla(200, 84%, 71%, 0.75);
+}
+
+#dialog-close-btn:hover {
+  box-shadow: 0 4px 8px 2px;
 }
 
 /* tools grid styling */
 
 .tools-grid {
-  background-color: var(--pink);
   display: grid;
   grid-template-columns: 1fr;
   justify-content: space-between;
@@ -499,7 +475,6 @@ button.btn-update:hover {
 #form-create-user,
 #form-update-user,
 #form-create-statistics {
-  background-color: var(--light-green);
   padding: 1em 2em;
   font-size: larger;
   display: grid;
@@ -511,7 +486,6 @@ button.btn-update:hover {
 
 #form-delete-user {
   margin: 2em auto 0;
-  background-color: var(--light-green);
   padding: 1em 1em 2em;
 
   font-size: larger;
