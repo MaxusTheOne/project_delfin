@@ -9,15 +9,16 @@ window.addEventListener("load", start);
 
 async function start() {
   await loadEconomy();
-  await loadDebt();
+  await calculateUserDebt();
   showTotalIncome();
-  calculateUserDebt();
   showTotalDebt();
 }
 
 async function loadEconomy() {
   console.log("Economy loaded");
   users = await getUsers();
+
+  users.sort((a, b) => b.debt - a.debt);
 
   for (const user of users) {
     if (user.age > 60) {
@@ -46,7 +47,10 @@ async function loadEconomy() {
 }
 
 function showTotalIncome() {
+  const totalWithDebt = total + totalDebt;
   document.querySelector("#income-value").textContent = total + " kr";
+  document.querySelector("#income-with-debt-value").textContent =
+    totalWithDebt + " kr";
 }
 
 async function loadDebt() {
@@ -58,8 +62,8 @@ async function loadDebt() {
     if (user.debt > 0) {
       const listItemHTML = `<li>${user.firstName} ${user.lastName}: ${user.debt} kr</li>`;
       debtListHTML += listItemHTML;
-      totalDebt += user.debt;
-      //console.log(user.debt);
+      console.log(totalDebt);
+      totalDebt += Number(user.debt);
     }
   }
   debtListElement.innerHTML = debtListHTML;

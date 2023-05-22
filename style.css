@@ -343,8 +343,7 @@ main {
   background-color: var(--navy);
   letter-spacing: 0.05em;
   text-transform: uppercase;
-  padding: 0.5em 1em;
-  width: 7.5%;
+  padding: 1em;
   max-width: 380px;
   border-radius: 3%;
   border: 2px solid black;
@@ -394,7 +393,8 @@ dialog {
   border-color: var(--navy);
   background-color: #c3bef0;
   position: fixed;
-  top: 85%;
+  top: 90vh;
+  max-height: 88vh;
   left: 30%;
   transform: translate(-50%, -50%);
   width: 90%;
