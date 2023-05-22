@@ -152,7 +152,8 @@ function updateClicked(userObject) {
   document.querySelector("#update-debt").value = userObject.debt;
   document.querySelector("#update-image").value = userObject.image;
   document.querySelector("#form-update-user").setAttribute("data-id", userObject.id);
-  document.querySelector("#extra-discipline-btn").addEventListener("click", addDisciplineToOutput);
+  document.querySelector("#extra-discipline-btn-update").addEventListener("click", addDisciplineToOutput);
+  document.querySelector("#remove-disciplines-btn-update").addEventListener("click", removeDisciplineToOutput);
   document.querySelector("#form-update-user").addEventListener("submit", updateUserClicked);
 }
 function addDisciplineToOutput() {
@@ -161,6 +162,10 @@ function addDisciplineToOutput() {
   const outputSelector = document.querySelector("#discipline-output");
   let text;
   if (disciplineValue != "") outputSelector.textContent += disciplineValue + ", ";
+}
+function removeDisciplineToOutput() {
+  const outputSelector = document.querySelector("#discipline-output");
+  outputSelector.textContent = "";
 }
 
 function deleteClicked(userObject) {

@@ -244,6 +244,12 @@ main {
   text-transform: uppercase;
 }
 
+.grid2rows {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr 1fr;
+}
+
 /* buttons in grid container */
 
 .grid-container .btns {
