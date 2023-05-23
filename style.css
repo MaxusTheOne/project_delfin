@@ -532,3 +532,7 @@ form button {
 #snackbar.show {
   visibility: visible;
 }
+
+::placeholder {
+  color: black;
+}
