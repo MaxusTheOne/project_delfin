@@ -48,8 +48,8 @@ async function updateResultsGrid() {
 
 function showResults(results, discipline) {
   document.querySelector(`#${discipline}List`).innerHTML = "";
-  let filteredResults = filterByGender(genderOption, results);
-  filteredResults = filterInactive(filteredResults);
+  let filteredResults = filterInactive(results);
+  filteredResults = filterByGender(genderOption, filteredResults);
 
   filteredResults = filterByAge(ageOption, filteredResults);
 
